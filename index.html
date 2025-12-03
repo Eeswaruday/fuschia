@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>FUSCHIA - Share Code & Notes with Ease</title>
+  <style>
+  :root {
+    --primary: #4f8cff;
+    --primary-hover: #1743d1;
+    --success: #10b981;
+    --background: #15171c;
+    --card: #23232b;
+    --text: #f3f4f6;
+    --muted: #94a3b8;
+    --danger: #ef4444;
+    --btn-radius: 13px;
+    --card-radius: 16px;
+    --shadow: 0 6px 28px rgba(0,0,0,.13);
+  }
+  html,body { height: 100%; margin: 0; padding: 0; }
+  body {
+    background: var(--background);
+    color: var(--text);
+    font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  .container { max-width: 1200px; margin: auto; padding: 0 17px; }
+
+  header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-height: 64px;
+    padding: 12px 0 6px 0;
+    position: relative;
+    border-bottom: 1px solid #23232b;
+  }
+  .logo {
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--primary);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    letter-spacing:.05em;
+  }
+  
+  .header-right {
+    margin-right:16px;
+  }
+  .btn-login {
+    background: #fff;
+    color: #0f172a;
+    border: none;
+    padding: 6px 19px;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 500;
+    box-shadow: 0 2px 6px #0005;
+    cursor:pointer;
+    transition: background .16s;
+  }
+  .btn-login:hover {
+    background: #e6ecfa;
+  }
+  .logout-btn {
+    background: var(--danger);
+    color: #fff;
+    border: none;
+    border-radius: var(--btn-radius);
+    font-weight: 500;
+    font-size: 1em;
+    padding: 8px 19px;
+    margin-left: 9px;
+    cursor: pointer;
+    transition: background .14s;
+  }
+  .logout-btn:hover { background: #b91c1c;}
+  .hero-section {
+    text-align: center;
+    position:relative;
+    margin: 32px 0 60px;
+    min-height: 195px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .hero-content {
+    width: 100%;
+    max-width: 650px;
+    margin-right:auto;
+    margin-left:30px;
+    flex:1;
+  }
+  .hero-headline {
+    font-size: 2.6rem;
+    font-weight: bold;
+    margin-bottom: 14px;
+    background: linear-gradient(90deg, #4f8cff 33%, #10b981 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    letter-spacing: .04em;
+    line-height:1.15;
+    margin-top:0;
+  }
+  .hero-tagline {
+    font-size: 1.17em;
+    color: var(--muted);
+    letter-spacing:.01em;
+    margin-bottom: 36px;
+    margin-top:5px;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content:center;
+    margin-top: 18px;
+    margin-bottom:0;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    font-weight: 550;
+    font-size: 1.13em;
+    padding: 12px 32px;
+    border-radius: var(--btn-radius);
+    box-shadow: var(--shadow);
+    cursor:pointer;
+    transition: background .12s;
+  }
+  .btn-primary:hover { background: var(--primary-hover);}
+  .btn-secondary {
+    background: #fff;
+    color: var(--primary);
+    border:none;
+    padding: 12px 32px;
+    font-weight: 570;
+    font-size:1.13em;
+    border-radius: var(--btn-radius);
+    box-shadow: 0 2px 7px #0004;
+    cursor:pointer;
+    transition: background .13s;
+  }
+  .btn-secondary:hover { background: #dbecff;}
+  .created-by-block {
+    background: var(--card);
+    color: #fff;
+    border-radius: var(--card-radius);
+    box-shadow: var(--shadow);
+    padding: 28px 32px 24px 32px;
+    min-width:270px;
+    max-width: 345px;
+    position: absolute;
+    right:5%;
+    top:16px;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    z-index:21;
+  }
+  .created-by-block .admin-name {
+    font-size:1.25em;
+    color: var(--success);
+    font-weight: 700;
+    margin-bottom:6px;
+    margin-top:0;
+    letter-spacing:.02em;
+  }
+  .created-by-block .admin-contact {
+    font-size: 1.14em;
+    color: var(--primary);
+    margin-bottom:18px;
+    font-weight:700;
+    letter-spacing:.04em;
+  }
+  .created-by-block .contact-admin-btn {
+    background: var(--primary);
+    color: #fff;
+    padding: 12px 28px;
+    font-size:1.07em;
+    border: none;
+    border-radius: 10px;
+    font-weight: 570;
+    box-shadow: 0 2px 18px #0002;
+    cursor: pointer;
+    transition: background .14s;
+    margin-top:2px;
+    letter-spacing:.01em;
+  }
+  .created-by-block .contact-admin-btn:hover { background: var(--success);}
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap: 36px;
+    margin-top: 60px;
+    margin-bottom:20px;
+  }
+  .feature-card {
+    background: var(--card);
+    border: 1.2px solid #23232b;
+    border-radius: 14px;
+    padding: 38px 30px;
+    box-shadow: var(--shadow);
+    text-align: left;
+    color: var(--text);
+    font-size:1.08em;
+    font-weight:500;
+    transition: background .14s;
+  }
+  .feature-card:hover { background: #24243a; }
+  .feature-icon { font-size: 46px; margin-bottom: 17px; }
+  .feature-title { font-size: 1.16em; font-weight: 700; margin-bottom: 10px; color: var(--text);}
+  .feature-description {font-size:1em; color: var(--muted);}
+  .browse-section {
+    margin-top: 46px;
+    padding-top: 32px;
+    border-top: 1.1px solid #21232a;
+    background: var(--background);
+    position: relative;
+  }
+  .browse-title { font-size: 2.0rem; font-weight: 700; margin-bottom: 22px; text-align:center; color: var(--primary);}
+  #searchInput {
+    width: 340px;
+    max-width: 96vw;
+    padding: 12px 23px;
+    border-radius: 11px;
+    border: 1.7px solid var(--primary);
+    background: var(--card);
+    color: var(--text);
+    font-size: 1.08rem;
+    margin-bottom: 18px;
+    box-shadow:0 2px 8px rgba(79,140,255,0.13);
+    transition: box-shadow 0.16s, border 0.13s;
+  }
+  #searchInput:focus {
+    outline: none;
+    border-color: var(--success);
+    box-shadow: 0 0 0 2px #10b98133;
+  }
+  .shares-list { display: grid; gap: 20px;}
+  .share-item {
+    background: var(--card);
+    border-radius: 12px;
+    box-shadow:0 2px 18px #0006;
+    padding: 22px 29px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background .13s;
+  }
+  .share-item:hover { background: #24243a;}
+  .share-info h3 {
+    color: var(--primary);
+    margin-bottom: 3px;
+    font-size: 1.12em;
+    font-weight: 670;
+  }
+  .share-info p {
+    color: var(--muted);
+    font-size: 0.98em;
+    margin-bottom:4px;
+  }
+  .share-actions { display: flex; gap: 10px;}
+  .share-actions button {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 9px;
+    padding: 8px 18px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor:pointer;
+    box-shadow:0 1px 4px #0003;
+    transition: background .12s;
+  }
+  .share-actions button.copy { background: var(--success);}
+  .share-actions button.copy:hover { background: #087c67;}
+  .share-actions button.openfile { background: var(--primary-hover);}
+  .share-actions button.openfile:hover { background: var(--success);}
+  .share-actions button.edit { background: var(--primary-hover);}
+  .share-actions button.edit:hover { background: var(--success);}
+  .share-actions button.delete { background: var(--danger);}
+  .share-actions button.delete:hover { background: #b91c1c;}
+  .share-actions button.rate { background: #ffe066; color: #24243a;}
+  .share-actions button.rate:hover { background: #ffd700; color: #111;}
+  .modal, .modal-view {
+    position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
+    z-index: 1000; display: none; align-items: center; justify-content: center;
+    background: rgba(15,17,22,.75);
+  }
+  .modal.show, .modal-view.show { display: flex; }
+  .modal-content, .modal-view {
+    background: var(--card);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    border: 1.2px solid #23232b;
+    overflow: auto;
+    position: relative;
+    animation: fadeIn .24s;
+  }
+  .modal-content { padding: 35px 39px; max-width: 440px; width:95vw;}
+  .modal-header { font-size: 1.23rem; font-weight: 700; margin-bottom: 20px; color: var(--primary);}
+  .form-group label { display:block; margin-bottom: 8px; color: var(--muted); font-size: 1em; font-weight: 540;}
+  .form-group input, .form-group select, .form-group textarea {width:100%;padding:12px 16px;background:#23232b;border-radius:8px;border:1.3px solid #23232b;color:#e1e6ec;font-size:1em;}
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {border-color:var(--primary);}
+  .form-group button {width:100%;margin-top:7px;}
+  .modal-close, .modal-view .close-btn {
+    position: absolute; top:14px; right:21px; background:none; border:none;
+    color: var(--muted); font-size:2.1em; cursor:pointer; width:38px; height:38px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .modal-close:hover, .modal-view .close-btn:hover { color: var(--primary);}
+  .modal-view { left: 50%; top: 50%; transform: translate(-50%, -50%);
+      background: var(--card); border-radius: 18px; padding: 32px 33px; max-width: 460px; width:98vw; min-height: 180px;
+      box-shadow: 0 20px 50px #0006; border: 1.05px solid var(--primary);}
+  .modal-view strong { color: var(--primary);}
+  .modal-view .actions {margin-top:15px;display:flex;gap:12px;justify-content:flex-end;}
+  .notification {
+    position: fixed; bottom: 28px; right: 37px;
+    background: var(--success);
+    color: #15171c;
+    border-radius: 10px;
+    box-shadow: 0 7px 22px rgba(15,17,22,.19);
+    font-size: 1.07em;
+    font-weight: 550;
+    padding: 12px 22px;
+    display: none;
+    animation: fadeIn .19s;
+    z-index: 2000;
+  }
+  .notification.show { display: block; }
+  .stars input {display:none;}
+  .stars label { font-size:1.45rem; color:#d1d5db; cursor:pointer; transition:color .16s;}
+  .stars input:checked ~ label, .stars label:hover, .stars label:hover ~ label { color: #ffe066;}
+  @media(max-width:800px){
+    .hero-section{flex-direction:column;align-items:center;}
+    .created-by-block{position:static;float:right;margin-top:22px;}
+    .hero-content{margin-left:0;}
+  }
+  @media(max-width:600px){
+    .hero-headline{font-size:2rem;}
+    .created-by-block{padding:18px 13px;}
+    .modal-content,.modal-view{padding:17px 5vw;}
+  }
+  @keyframes fadeIn {from{opacity:0;} to{opacity:1;}}
+  
+  /* FULL-WIDTH CODE VIEWER BOX */
+  #codeViewer {
+    width: 100%;
+    background: #0d1525;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    border: 1px solid #1f2a40;
+    margin-top: 20px;
+    display: none;
+  }
+
+  /* Code content */
+  #codeBox {
+    background: #001021;
+    padding: 20px;
+    border-radius: 10px;
+    color: #79f7b3;
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  /* Top row: Title + Copy button */
+  #codeHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .copyBtn {
+    padding: 6px 14px;
+    background: #1e293b;
+    color: #dbeafe;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid #334155;
+    transition: 0.2s;
+    font-weight: 600;
+  }
+  .copyBtn:hover {
+    background: #3b82f6;
+    color: white;
+  }
+
+  /* Views + Rating */
+  #codeInfo {
+    margin-top: 15px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    color: #9aa4b2;
+  }
+
+  .star {
+    font-size: 24px;
+    cursor: pointer;
+    color: #64748b;
+    transition: color 0.2s;
+  }
+  .star.active {
+    color: gold;
+  }
+  
+  /* Admin Dashboard */
+  .admin-panel {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 25px;
+    margin-top: 40px;
+    display: none;
+  }
+  
+  .admin-panel.show {
+    display: block;
+  }
+  
+  .admin-title {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  
+  .admin-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+  }
+  
+  .admin-tab {
+    background: transparent;
+    color: var(--muted);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .admin-tab.active {
+    background: var(--primary);
+    color: white;
+  }
+  
+  .admin-content {
+    display: none;
+  }
+  
+  .admin-content.active {
+    display: block;
+  }
+  
+  .contacts-table, .shares-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1a1f2e;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .contacts-table th, .contacts-table td,
+  .shares-table th, .shares-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #334155;
+  }
+  
+  .contacts-table th, .shares-table th {
+    background: #0f172a;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  
+  .contacts-table tr:hover, .shares-table tr:hover {
+    background: #232b3d;
+  }
+  
+  .view-count-badge {
+    background: #3b82f6;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+  
+  .top-share {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.1), transparent);
+  }
+  
+  .close-code-btn {
+    background: var(--danger);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 15px;
+  }
+  
+  .close-code-btn:hover {
+    background: #b91c1c;
+  }
+  
+  </style>
+</head>
+<body>
+  <div class="notification" id="notification"></div>
+  
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeContactModal()">&times;</button>
+      <div class="modal-header">Contact Admin</div>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="contactName">Your Name</label>
+          <input type="text" id="contactName" required>
+        </div>
+        <div class="form-group">
+          <label for="contactNumber">Your Mobile Number</label>
+          <input type="tel" id="contactNumber" required pattern="[0-9]{10}">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn-primary">Contact</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <div class="container">
+    <header>
+      <a href="#" class="logo">
+  <img src="fuschia-logo.png" alt="Fuschia Logo" style="height:38px; width:auto; margin-right:8px;">
+  <span class="logo-text" style="font-weight:800; font-size:1.35rem; color:#4f8cff; letter-spacing:0.5px;">
+    FUSCHIA
+  </span>
+</a>
+
+      <div class="header-right" id="headerRight">
+        <button class="btn-login" onclick="openLoginModal()" id="loginBtn">Admin Login</button>
+        <button class="logout-btn" style="display:none;" onclick="logout()" id="logoutBtn">Log Out</button>
+      </div>
+    </header>
+    
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-headline">Share Code & Notes with Ease</h1>
+        <p class="hero-tagline">
+          A simple, responsive platform for sharing code snippets and notes with syntax highlighting and instant access
+        </p>
+        <div class="hero-buttons" id="heroButtons">
+          <button class="btn-primary" onclick="openLoginModal()" id="heroLoginBtn">Admin Login</button>
+          <button class="btn-secondary" onclick="scrollToBrowse()">Browse Shares</button>
+        </div>
+        <div class="hero-buttons" id="shareOptions" style="display:none; margin-top:29px;">
+          <button class="btn-primary" onclick="openShareModal('code')">Share Code</button>
+          <button class="btn-secondary" onclick="openShareModal('notes')">Share Notes</button>
+        </div>
+      </div>
+      <div class="created-by-block">
+        <div class="admin-name">Created by EESWAR UDAY</div>
+        <div class="admin-contact">Contact no: 9848863038</div>
+        <button class="contact-admin-btn" onclick="openContactModal()">Contact Admin</button>
+      </div>
+    </div>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">✨</div>
+        <div class="feature-title">Syntax Highlighting</div>
+        <div class="feature-description">Beautiful code highlighting for multiple programming languages with automatic detection</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Instant Sharing</div>
+        <div class="feature-description">Create and share code snippets instantly with a single click. No sign up required</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Responsive Design</div>
+        <div class="feature-description">Works perfectly on all devices - desktop, tablet, and mobile. Always responsive</div>
+      </div>
+    </div>
+    
+    <!-- Full-width Code Viewer -->
+    <div id="codeViewer">
+      <div id="codeHeader">
+        <h2 id="codeTitle" style="color:#3b82f6; margin:0"></h2>
+        <button class="copyBtn" id="copyCodeBtn">Copy Code</button>
+      </div>
+      <pre id="codeBox"></pre>
+      <div id="codeInfo">
+        <span id="viewCount"></span>
+        <div id="ratingArea"></div>
+      </div>
+      <button class="close-code-btn" onclick="closeCodeViewer()">Close Viewer</button>
+    </div>
+    
+    <!-- Admin Dashboard -->
+    <div id="adminPanel" class="admin-panel">
+      <h2 class="admin-title">Admin Dashboard</h2>
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchAdminTab('shares')">Shares Management</button>
+        <button class="admin-tab" onclick="switchAdminTab('contacts')">Contact Submissions</button>
+      </div>
+      
+      <div id="sharesTab" class="admin-content active">
+        <h3 style="color: var(--muted); margin-bottom: 15px;">All Shares (Sorted by Views)</h3>
+        <table class="shares-table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Type</th>
+              <th>Shared By</th>
+              <th>Views</th>
+              <th>Avg Rating</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminSharesList"></tbody>
+        </table>
+      </div>
+      
+      <div id="contactsTab" class="admin-content">
+        <h3 style="color: var(--muted); margin-bottom: 15px;">Contact Submissions</h3>
+        <table class="contacts-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Phone Number</th>
+              <th>Date & Time</th>
+            </tr>
+          </thead>
+          <tbody id="adminContactsList"></tbody>
+        </table>
+      </div>
+    </div>
+    
+    <div class="browse-section" id="browseSection">
+      <h2 class="browse-title">Recent Shares</h2>
+      <div style="text-align:center; margin-bottom: 22px;">
+        <input type="text" id="searchInput" placeholder="Search by Title..." />
+      </div>
+      <div class="shares-list" id="sharesList"></div>
+    </div>
+  </div>
+  
+  <!-- View Modal (Legacy - for compatibility) -->
+  <div id="viewModal" class="modal-view" style="display: none;">
+    <button class="close-btn" onclick="closeViewModal()">&times;</button>
+    <div id="viewModalContent"></div>
+    <div class="actions" id="viewActions"></div>
+  </div>
+  
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+      <div class="modal-header">Admin Login</div>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" required>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn-primary">Sign In</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Share Modal (Code or Notes) -->
+  <div id="shareModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeShareModal()">&times;</button>
+      <div class="modal-header" id="shareModalHeader"></div>
+      <form id="shareForm">
+        <div class="form-group">
+          <label for="shareTitle">Title</label>
+          <input type="text" id="shareTitle" required>
+        </div>
+        <div class="form-group">
+          <label for="shareDescription">Description</label>
+          <input type="text" id="shareDescription" required>
+        </div>
+        <div class="form-group" id="languageField" style="display:none;">
+          <label for="shareLanguage">Language</label>
+          <select id="shareLanguage">
+            <option value="">Select Language</option>
+            <option value="javascript">JavaScript</option>
+            <option value="python">Python</option>
+            <option value="java">Java</option>
+            <option value="c++">C++</option>
+            <option value="c">C</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="typescript">TypeScript</option>
+            <option value="php">PHP</option>
+            <option value="go">Go</option>
+            <option value="sql">SQL</option>
+          </select>
+        </div>
+        <div class="form-group" id="codeField" style="display:none;">
+          <label for="shareCode">Paste your code</label>
+          <textarea id="shareCode" rows="6"></textarea>
+        </div>
+        <div id="ratingField" style="display:none;">
+          <div class="form-group">
+            <label>Rating (optional) - Only for non-admin users</label>
+            <div class="stars" id="starsContainer"></div>
+          </div>
+        </div>
+        <div class="form-group" id="fileField" style="display:none;">
+          <label for="shareFile">Attach File</label>
+          <input type="file" id="shareFile" accept=".txt,.pdf,.doc,.docx,image/*">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn-primary">Share</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    // Application State
+    let loggedIn = false;
+    let shares = [];
+    let contacts = [];
+    let editingShareId = null;
+    let shareType = "";
+    
+    // Initialize from localStorage
+    function loadAllData() {
+      try {
+        shares = JSON.parse(localStorage.getItem('shares') || "[]");
+        contacts = JSON.parse(localStorage.getItem('contacts') || "[]");
+        loggedIn = localStorage.getItem('loggedIn') === 'true';
+      } catch(e) {
+        console.error("Error loading data:", e);
+        shares = [];
+        contacts = [];
+        loggedIn = false;
+      }
+    }
+    
+    function saveAllData() {
+      localStorage.setItem('shares', JSON.stringify(shares));
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+      localStorage.setItem('loggedIn', loggedIn ? 'true' : 'false');
+    }
+    
+    // For browser user rating only once per share
+    function getRatedIds() {
+      try { return JSON.parse(localStorage.getItem('ratedShares') || "[]"); }
+      catch(e){return [];}
+    }
+    
+    function addRatedId(id) {
+      let ids = getRatedIds();
+      if(!ids.includes(id)){ 
+        ids.push(id); 
+        localStorage.setItem('ratedShares', JSON.stringify(ids)); 
+      }
+    }
+    
+    // Login/Logout Functions
+    function logout() { 
+      loggedIn = false; 
+      saveAllData(); 
+      renderUI(); 
+      showNotification("Logged Out"); 
+    }
+    
+    // UI Rendering
+    function renderUI() {
+      document.getElementById('headerRight').style.display = '';
+      document.getElementById('heroButtons').style.display = loggedIn ? 'none' : '';
+      document.getElementById('shareOptions').style.display = loggedIn ? '' : 'none';
+      document.getElementById('loginBtn').style.display = loggedIn ? 'none' : '';
+      document.getElementById('logoutBtn').style.display = loggedIn ? '' : 'none';
+      
+      // Show/hide admin panel
+      document.getElementById('adminPanel').style.display = loggedIn ? 'block' : 'none';
+      
+      if (loggedIn) {
+        renderAdminPanel();
+      }
+      
+      renderShares(shares);
+    }
+    
+    // Admin Login
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      if (email === 'uday90925@gmail.com' && password === 'Uday7@uday') {
+        loggedIn = true;
+        saveAllData();
+        showNotification('Admin Login Successful');
+        closeLoginModal();
+        renderUI();
+      } else { 
+        showNotification('Invalid Credentials'); 
+      }
+      document.getElementById('email').value = '';
+      document.getElementById('password').value = '';
+    });
+    
+    // Modal Functions
+    function openLoginModal() { 
+      document.getElementById('loginModal').classList.add('show'); 
+    }
+    
+    function closeLoginModal() { 
+      document.getElementById('loginModal').classList.remove('show'); 
+    }
+    
+    function openShareModal(type, share = null) {
+      if (!loggedIn && !share) { 
+        showNotification('Login Required'); 
+        return; 
+      }
+      
+      shareType = type;
+      editingShareId = share?.id || null;
+      document.getElementById('shareModal').classList.add('show');
+      document.getElementById('shareTitle').value = share?.title || '';
+      document.getElementById('shareDescription').value = share?.description || '';
+      document.getElementById('shareCode').value = share?.code || '';
+      document.getElementById('shareLanguage').value = share?.language || '';
+      document.getElementById('shareFile').value = '';
+      
+      // Show/hide fields based on type
+      if (shareType === 'code') {
+        document.getElementById('codeField').style.display = '';
+        document.getElementById('languageField').style.display = '';
+        document.getElementById('fileField').style.display = 'none';
+        document.getElementById('shareModalHeader').textContent = editingShareId ? 'Edit Code Share' : 'Share Code';
+      } else {
+        document.getElementById('codeField').style.display = 'none';
+        document.getElementById('languageField').style.display = 'none';
+        document.getElementById('fileField').style.display = '';
+        document.getElementById('shareModalHeader').textContent = editingShareId ? 'Edit Notes Share' : 'Share Notes';
+      }
+      
+      // Rating field only for non-admin users
+      if (!loggedIn) {
+        document.getElementById('ratingField').style.display = '';
+        setStars(share?.rating || 0);
+      } else {
+        document.getElementById('ratingField').style.display = 'none';
+      }
+    }
+    
+    function closeShareModal() { 
+      document.getElementById('shareModal').classList.remove('show'); 
+      editingShareId = null; 
+      document.getElementById('shareForm').reset();
+    }
+    
+    // Contact Modal Functions
+    function openContactModal() { 
+      document.getElementById('contactModal').classList.add('show'); 
+    }
+    
+    function closeContactModal() { 
+      document.getElementById('contactModal').classList.remove('show'); 
+      document.getElementById('contactForm').reset();
+    }
+    
+    // Rating stars builder
+    function setStars(val=0) {
+      let out = '';
+      for (let i = 5; i >= 1; i--) {
+        out += `<input type="radio" name="ratingStar" id="star${i}" value="${i}" ${val==i?"checked":""}>
+          <label for="star${i}">&#9733;</label>`;
+      }
+      document.getElementById('starsContainer').innerHTML = out;
+    }
+    
+    // Share Form Submission
+    document.getElementById('shareForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const title = document.getElementById('shareTitle').value.trim();
+      const desc = document.getElementById('shareDescription').value.trim();
+      const code = shareType === 'code' ? document.getElementById('shareCode').value.trim() : '';
+      const lang = shareType === 'code' ? document.getElementById('shareLanguage').value : '';
+      
+      let rating = 0;
+      if (!loggedIn) {
+        rating = +[...document.querySelectorAll("input[name='ratingStar']")].find(x=>x.checked)?.value||0;
+      }
+      
+      let file = null, filename = "", filedata = "";
+      if (shareType === "notes" && document.getElementById('shareFile').files.length > 0) {
+        file = document.getElementById('shareFile').files[0];
+        filename = file.name;
+        filedata = await toBase64(file);
+      }
+      
+      if (!title || !desc || (shareType === 'code' && (!code || !lang))) {
+        showNotification('Fill all required fields');
+        return;
+      }
+      
+      let noteFileMeta = null;
+      if (shareType === "notes" && file) {
+        noteFileMeta = {
+          name: filename, 
+          type: file.type, 
+          size: file.size, 
+          data: filedata
+        };
+      }
+      
+      if (editingShareId) {
+        let idx = shares.findIndex(s => s.id === editingShareId);
+        if (idx >= 0) {
+          shares[idx].title = title;
+          shares[idx].description = desc;
+          if (shareType === 'code') {
+            shares[idx].code = code; 
+            shares[idx].language = lang;
+          }
+          if (shareType === 'notes') shares[idx].file = noteFileMeta;
+          saveAllData(); 
+          closeShareModal(); 
+          renderShares(shares); 
+          showNotification('Share updated.');
+        }
+      } else {
+        const newShare = {
+          id: Date.now(),
+          type: shareType,
+          title,
+          description: desc,
+          code,
+          language: lang,
+          time: new Date().toISOString(),
+          sharedBy: loggedIn ? 'Admin' : 'User',
+          ratings: rating ? [{ value: rating }] : [],
+          file: noteFileMeta,
+          views: 0,
+          detailsHidden: false
+        };
+        
+        shares.unshift(newShare);
+        saveAllData(); 
+        closeShareModal(); 
+        renderShares(shares); 
+        showNotification('Share Added!');
+      }
+      
+      document.getElementById('shareFile').value='';
+    });
+    
+    // Convert file to Base64
+    function toBase64(file) { 
+      return new Promise((resolve,reject)=>{
+        const r = new FileReader();
+        r.onload = () => resolve(r.result);
+        r.onerror = reject; 
+        r.readAsDataURL(file);
+      });
+    }
+    
+    // Render shares list
+    function renderShares(list) {
+      const container = document.getElementById('sharesList');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      let ratedIds = getRatedIds();
+      
+      if (!list.length) {
+        container.innerHTML = '<div style="text-align:center;color:#94a3b8;padding:40px;">No shares found</div>';
+        return;
+      }
+      
+      // For non-admin, show most recent first
+      // For admin, they'll see sorted view in admin panel
+      const displayList = [...list];
+      if (!loggedIn) {
+        displayList.sort((a, b) => b.id - a.id); // Most recent first
+      }
+      
+      displayList.forEach(share => {
+        let timeAgo = timeSince(new Date(share.time));
+        let ratingsArr = share.ratings || [];
+        let avgRating = ratingsArr.length ? 
+          (ratingsArr.reduce((a,b) => a + b.value, 0) / ratingsArr.length).toFixed(1) : 
+          '-';
+        
+        let avgStars = '';
+        if (avgRating !== '-') { 
+          avgStars = '★'.repeat(Math.round(avgRating)); 
+        }
+        
+        let fileShow = '';
+        if (share.type === 'notes' && share.file) {
+          fileShow = `<div style="margin-top:4px;">
+            <span style="background:#323342;color:#8edcff;padding:2px 9px;border-radius:4px;">
+              ${share.file.name}
+            </span>
+          </div>`;
+        }
+        
+        // Description hidden if detailsHidden is true
+        const descriptionHtml = share.detailsHidden ? 
+          '<p style="color: #64748b; font-style: italic;">Details hidden after download</p>' : 
+          `<p>${escapeHtml(share.description)}</p>`;
+        
+        let actionsHtml = '<div class="share-actions">';
+        
+        // View button - different behavior for code vs notes
+        if (share.type === 'code') {
+          actionsHtml += `<button class="view" onclick="viewCodeShare(${share.id})">View</button>`;
+        } else {
+          actionsHtml += `<button class="view" onclick="downloadShareFile(${share.id})">View</button>`;
+        }
+        
+        actionsHtml += `<button class="copy" onclick="copyShare(${share.id})">Copy</button>`;
+        
+        if (share.type === 'notes' && share.file && share.file.data && loggedIn) {
+          actionsHtml += `<button class="openfile" onclick="openShareFile('${share.file.data}','${share.file.name}')">Open File</button>`;
+        }
+        
+        if (loggedIn && share.sharedBy === 'Admin') {
+          actionsHtml += `
+            <button class="edit" onclick="editShare(${share.id})">Edit</button>
+            <button class="delete" onclick="deleteShare(${share.id})">Delete</button>
+          `;
+        }
+        
+        if (!loggedIn && !ratedIds.includes(share.id)) {
+          actionsHtml += `<button class="rate" onclick="rateShare(${share.id})">Rate</button>`;
+        }
+        
+        actionsHtml += '</div>';
+        
+        // Views only shown for admin
+        const viewsHtml = loggedIn ? 
+          `<div style="margin-top:8px;color:var(--muted);font-size:0.9em;">
+            Views: <b style="color:#ffe066">${share.views || 0}</b>
+          </div>` : '';
+        
+        container.innerHTML += `
+          <div class="share-item">
+            <div class="share-info">
+              <h3>${escapeHtml(share.title)}</h3>
+              <p>Shared by ${share.sharedBy} • ${timeAgo}</p>
+              ${descriptionHtml}
+              ${viewsHtml}
+              <div style="margin-top:8px;">
+                Avg Rating: 
+                <span style="color:#ffe066;font-size:1.1em">${avgStars}</span>
+                ${avgRating !== '-' ? 
+                  `<span style="color:#ffe066;font-weight:bold;margin-left:5px">${avgRating}</span>` : 
+                  '-'
+                }
+              </div>
+              ${fileShow}
+            </div>
+            ${actionsHtml}
+          </div>
+        `;
+      });
+    }
+    
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const val = this.value.trim().toLowerCase();
+      const filtered = shares.filter(s => s.title.toLowerCase().includes(val));
+      renderShares(filtered);
+    });
+    
+    // View code share in full-width viewer
+    window.viewCodeShare = function(id) {
+      const share = shares.find(s => s.id === id);
+      if (!share) return showNotification('Share not found!');
+      
+      // Increment views
+      share.views = (share.views || 0) + 1;
+      saveAllData();
+      
+      // Hide browse section, show code viewer
+      document.getElementById('browseSection').style.display = 'none';
+      document.getElementById('codeViewer').style.display = 'block';
+      
+      // Set code viewer content
+      document.getElementById('codeTitle').textContent = share.title;
+      document.getElementById('codeBox').textContent = share.code;
+      document.getElementById('viewCount').innerHTML = 
+        `👁️ Views: <b style="color:#3b82f6">${share.views}</b>`;
+      
+      // Copy button functionality
+      document.getElementById('copyCodeBtn').onclick = function() {
+        navigator.clipboard.writeText(share.code)
+          .then(() => {
+            const btn = document.getElementById('copyCodeBtn');
+            btn.textContent = 'Copied ✓';
+            setTimeout(() => btn.textContent = 'Copy Code', 1200);
+          })
+          .catch(err => showNotification('Failed to copy'));
+      };
+      
+      // Rating area - only for non-admin users
+      const ratingArea = document.getElementById('ratingArea');
+      if (loggedIn) {
+        ratingArea.innerHTML = `<span style="color:#94a3b8">Rating hidden for admin</span>`;
+      } else {
+        // Check if user already rated
+        let ratedIds = getRatedIds();
+        if (ratedIds.includes(id)) {
+          ratingArea.innerHTML = `<span style='color:#94a3b8'>You already rated this ✓</span>`;
+        } else {
+          ratingArea.innerHTML = `
+            <span>Rate:</span>
+            <span class="star" data-val="1">★</span>
+            <span class="star" data-val="2">★</span>
+            <span class="star" data-val="3">★</span>
+            <span class="star" data-val="4">★</span>
+            <span class="star" data-val="5">★</span>
+          `;
+          
+          // Add click listeners to stars
+          document.querySelectorAll('#ratingArea .star').forEach(star => {
+            star.addEventListener('click', function() {
+              const val = parseInt(this.dataset.val);
+              
+              // Add rating to share
+              share.ratings = share.ratings || [];
+              share.ratings.push({ value: val });
+              saveAllData();
+              
+              // Mark as rated
+              addRatedId(id);
+              
+              // Update UI
+              document.querySelectorAll('#ratingArea .star').forEach(s => {
+                s.classList.remove('active');
+              });
+              
+              for (let i = 0; i < val; i++) {
+                document.querySelectorAll('#ratingArea .star')[i].classList.add('active');
+              }
+              
+              ratingArea.innerHTML += ` <b style="color:#3b82f6">Thanks ✓</b>`;
+              showNotification('Thank you for your rating!');
+            });
+          });
+        }
+      }
+      
+      // Scroll to code viewer
+      document.getElementById('codeViewer').scrollIntoView({ behavior: 'smooth' });
+    };
+    
+    // Close code viewer
+    function closeCodeViewer() {
+      document.getElementById('codeViewer').style.display = 'none';
+      document.getElementById('browseSection').style.display = 'block';
+      renderShares(shares);
+    }
+    
+    // Download file for notes
+    function downloadShareFile(id) {
+      const share = shares.find(s => s.id === id);
+      if (!share || !share.file || !share.file.data) {
+        showNotification('File not found');
+        return;
+      }
+      
+      try {
+        // Create download link
+        const a = document.createElement('a');
+        a.href = share.file.data;
+        a.download = share.file.name || 'download';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        
+        // Increment views
+        share.views = (share.views || 0) + 1;
+        
+        // Hide details after download
+        share.detailsHidden = true;
+        
+        saveAllData();
+        renderShares(shares);
+        showNotification('Download started...');
+      } catch (err) {
+        console.error('Download error:', err);
+        showNotification('Download failed');
+      }
+    }
+    
+    // Open file in new tab (for admin)
+    function openShareFile(data, name) {
+      window.open(data, '_blank');
+    }
+    
+    // Copy share content
+    function copyShare(id) {
+      const share = shares.find(s => s.id === id);
+      if (!share) return;
+      
+      let copyText = '';
+      if (share.type === 'code') {
+        copyText = share.code;
+      } else {
+        copyText = `${share.title}\n\n${share.description}`;
+        if (share.file) {
+          copyText += `\n\nFile: ${share.file.name}`;
+        }
+      }
+      
+      navigator.clipboard.writeText(copyText)
+        .then(() => showNotification('Copied to clipboard!'))
+        .catch(err => showNotification('Failed to copy'));
+    }
+    
+    // Edit share
+    function editShare(id) {
+      const share = shares.find(s => s.id === id);
+      if (!share) return;
+      openShareModal(share.type, share);
+    }
+    
+    // Delete share
+    function deleteShare(id) {
+      if (!confirm('Are you sure you want to delete this share?')) return;
+      shares = shares.filter(s => s.id !== id);
+      saveAllData();
+      renderShares(shares);
+      if (loggedIn) renderAdminPanel();
+      showNotification('Share deleted.');
+    }
+    
+    // Rate share (for non-admin users)
+    function rateShare(id) {
+      const share = shares.find(s => s.id === id);
+      if (!share) return;
+      
+      let stars = prompt('Rate this share (1-5):');
+      stars = parseInt(stars);
+      
+      if (!(stars >= 1 && stars <= 5)) {
+        showNotification('Enter rating between 1 and 5');
+        return;
+      }
+      
+      share.ratings = share.ratings || [];
+      share.ratings.push({ value: stars });
+      saveAllData();
+      
+      addRatedId(id);
+      renderShares(shares);
+      showNotification('Thank you for your rating!');
+    }
+    
+    // Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById("contactName").value.trim();
+      const num = document.getElementById("contactNumber").value.trim();
+      
+      if (name.length < 2 || !num.match(/^\d{10}$/)) {
+        showNotification("Please enter valid name and 10 digit number");
+        return;
+      }
+      
+      // Save contact
+      const newContact = {
+        id: Date.now(),
+        name: name,
+        phone: num,
+        timestamp: new Date().toISOString(),
+        date: new Date().toLocaleString()
+      };
+      
+      contacts.unshift(newContact);
+      saveAllData();
+      
+      showNotification("Contact sent successfully!");
+      closeContactModal();
+    });
+    
+    // Admin Panel Functions
+    function renderAdminPanel() {
+      renderAdminShares();
+      renderAdminContacts();
+    }
+    
+    function renderAdminShares() {
+      const container = document.getElementById('adminSharesList');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      
+      // Sort by views descending for admin
+      const sortedShares = [...shares].sort((a, b) => (b.views || 0) - (a.views || 0));
+      
+      sortedShares.forEach((share, index) => {
+        const ratingsArr = share.ratings || [];
+        const avgRating = ratingsArr.length ? 
+          (ratingsArr.reduce((a, b) => a + b.value, 0) / ratingsArr.length).toFixed(1) : 
+          '-';
+        
+        const isTopShare = index === 0 && share.views > 0;
+        
+        container.innerHTML += `
+          <tr class="${isTopShare ? 'top-share' : ''}">
+            <td>
+              ${escapeHtml(share.title)}
+              ${isTopShare ? '<span class="top-badge">TOP</span>' : ''}
+            </td>
+            <td>${share.type === 'code' ? 'Code' : 'Notes'}</td>
+            <td>${share.sharedBy}</td>
+            <td><span class="view-count-badge">${share.views || 0}</span></td>
+            <td>${avgRating}</td>
+            <td>
+              <button class="action-btn" onclick="viewCodeShare(${share.id})">View</button>
+              <button class="action-btn" onclick="editShare(${share.id})">Edit</button>
+              <button class="action-btn" onclick="deleteShare(${share.id})" style="background:var(--danger)">Delete</button>
+            </td>
+          </tr>
+        `;
+      });
+      
+      if (sortedShares.length === 0) {
+        container.innerHTML = `
+          <tr>
+            <td colspan="6" style="text-align:center;padding:20px;color:#94a3b8">
+              No shares yet
+            </td>
+          </tr>
+        `;
+      }
+    }
+    
+    function renderAdminContacts() {
+      const container = document.getElementById('adminContactsList');
+      if (!container) return;
+      
+      container.innerHTML = '';
+      
+      contacts.forEach(contact => {
+        container.innerHTML += `
+          <tr>
+            <td>${escapeHtml(contact.name)}</td>
+            <td>${contact.phone}</td>
+            <td>${new Date(contact.timestamp).toLocaleString()}</td>
+          </tr>
+        `;
+      });
+      
+      if (contacts.length === 0) {
+        container.innerHTML = `
+          <tr>
+            <td colspan="3" style="text-align:center;padding:20px;color:#94a3b8">
+              No contact submissions yet
+            </td>
+          </tr>
+        `;
+      }
+    }
+    
+    function switchAdminTab(tabName) {
+      // Update tab buttons
+      document.querySelectorAll('.admin-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      document.querySelectorAll('.admin-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // Activate selected tab
+      event.target.classList.add('active');
+      document.getElementById(tabName + 'Tab').classList.add('active');
+    }
+    
+    // Utility Functions
+    function showNotification(msg) {
+      let notification = document.getElementById("notification");
+      notification.innerText = msg;
+      notification.classList.add("show");
+      setTimeout(() => notification.classList.remove("show"), 2700);
+    }
+    
+    function timeSince(date) {
+      const s = Math.floor((new Date() - date) / 1000);
+      let v = Math.floor(s / 31536000); 
+      if(v >= 1) return v + " year" + (v == 1 ? "" : "s") + " ago";
+      
+      v = Math.floor(s / 2592000); 
+      if(v >= 1) return v + " month" + (v == 1 ? "" : "s") + " ago";
+      
+      v = Math.floor(s / 86400); 
+      if(v >= 1) return v + " day" + (v == 1 ? "" : "s") + " ago";
+      
+      v = Math.floor(s / 3600); 
+      if(v >= 1) return v + " hour" + (v == 1 ? "" : "s") + " ago";
+      
+      v = Math.floor(s / 60); 
+      if(v >= 1) return v + " min ago";
+      
+      return "Just now";
+    }
+    
+    function escapeHtml(text) {
+      return (text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+    
+    function scrollToBrowse() {
+      document.getElementById('browseSection').scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Event listeners for modal clicks
+    document.getElementById('loginModal').addEventListener('click', function(e) {
+      if (e.target === this) closeLoginModal();
+    });
+    
+    document.getElementById('shareModal').addEventListener('click', function(e) {
+      if (e.target === this) closeShareModal();
+    });
+    
+    document.getElementById('contactModal').addEventListener('click', function(e) {
+      if (e.target === this) closeContactModal();
+    });
+    
+    // Initialize on page load
+    window.onload = function() {
+      loadAllData();
+      renderUI();
+      setStars(0); // Initialize rating stars
+    };
+  </script>
+</body>
+</html>

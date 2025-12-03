@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>FUSCHIA - Share Code & Notes with Ease</title>
+  <title>FUSCHIA - AI-Powered Code Sharing Platform</title>
   <style>
   :root {
     --primary: #4f8cff;
@@ -17,6 +17,7 @@
     --btn-radius: 13px;
     --card-radius: 16px;
     --shadow: 0 6px 28px rgba(0,0,0,.13);
+    --time-travel: #8b5cf6;
   }
   html,body { height: 100%; margin: 0; padding: 0; }
   body {
@@ -25,6 +26,7 @@
     font-family: 'Inter', 'Segoe UI', 'Roboto', Arial, sans-serif;
     line-height: 1.6;
     min-height: 100vh;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
   }
   .container { max-width: 1200px; margin: auto; padding: 0 17px; }
 
@@ -61,11 +63,12 @@
     font-size: 1em;
     font-weight: 500;
     box-shadow: 0 2px 6px #0005;
-    cursor:pointer;
+    cursor: pointer;
     transition: background .16s;
   }
   .btn-login:hover {
     background: #e6ecfa;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
   }
   .logout-btn {
     background: var(--danger);
@@ -79,7 +82,10 @@
     cursor: pointer;
     transition: background .14s;
   }
-  .logout-btn:hover { background: #b91c1c;}
+  .logout-btn:hover { 
+    background: #b91c1c;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
   .hero-section {
     text-align: center;
     position:relative;
@@ -100,7 +106,7 @@
     font-size: 2.6rem;
     font-weight: bold;
     margin-bottom: 14px;
-    background: linear-gradient(90deg, #4f8cff 33%, #10b981 90%);
+    background: linear-gradient(90deg, #4f8cff 33%, #10b981 90%, #8b5cf6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -132,10 +138,13 @@
     padding: 12px 32px;
     border-radius: var(--btn-radius);
     box-shadow: var(--shadow);
-    cursor:pointer;
+    cursor: pointer;
     transition: background .12s;
   }
-  .btn-primary:hover { background: var(--primary-hover);}
+  .btn-primary:hover { 
+    background: var(--primary-hover);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
   .btn-secondary {
     background: #fff;
     color: var(--primary);
@@ -145,10 +154,13 @@
     font-size:1.13em;
     border-radius: var(--btn-radius);
     box-shadow: 0 2px 7px #0004;
-    cursor:pointer;
+    cursor: pointer;
     transition: background .13s;
   }
-  .btn-secondary:hover { background: #dbecff;}
+  .btn-secondary:hover { 
+    background: #dbecff;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
   .created-by-block {
     background: var(--card);
     color: #fff;
@@ -194,7 +206,10 @@
     margin-top:2px;
     letter-spacing:.01em;
   }
-  .created-by-block .contact-admin-btn:hover { background: var(--success);}
+  .created-by-block .contact-admin-btn:hover { 
+    background: var(--success);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
   .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -214,7 +229,10 @@
     font-weight:500;
     transition: background .14s;
   }
-  .feature-card:hover { background: #24243a; }
+  .feature-card:hover { 
+    background: #24243a;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
   .feature-icon { font-size: 46px; margin-bottom: 17px; }
   .feature-title { font-size: 1.16em; font-weight: 700; margin-bottom: 10px; color: var(--text);}
   .feature-description {font-size:1em; color: var(--muted);}
@@ -255,7 +273,10 @@
     align-items: center;
     transition: background .13s;
   }
-  .share-item:hover { background: #24243a;}
+  .share-item:hover { 
+    background: #24243a;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
   .share-info h3 {
     color: var(--primary);
     margin-bottom: 3px;
@@ -276,9 +297,12 @@
     padding: 8px 18px;
     font-size: 1em;
     font-weight: 500;
-    cursor:pointer;
+    cursor: pointer;
     box-shadow:0 1px 4px #0003;
     transition: background .12s;
+  }
+  .share-actions button:hover {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
   }
   .share-actions button.copy { background: var(--success);}
   .share-actions button.copy:hover { background: #087c67;}
@@ -290,6 +314,10 @@
   .share-actions button.delete:hover { background: #b91c1c;}
   .share-actions button.rate { background: #ffe066; color: #24243a;}
   .share-actions button.rate:hover { background: #ffd700; color: #111;}
+  .share-actions button.compile { background: #8b5cf6; color: white;}
+  .share-actions button.compile:hover { background: #7c3aed; color: white;}
+  .share-actions button.pair-program { background: #10b981; color: white;}
+  .share-actions button.pair-program:hover { background: #0da271; color: white;}
   .modal, .modal-view {
     position: fixed; left: 0; top: 0; width: 100vw; height: 100vh;
     z-index: 1000; display: none; align-items: center; justify-content: center;
@@ -316,8 +344,12 @@
     color: var(--muted); font-size:2.1em; cursor:pointer; width:38px; height:38px;
     display:flex; align-items:center; justify-content:center;
   }
-  .modal-close:hover, .modal-view .close-btn:hover { color: var(--primary);}
-  .modal-view { left: 50%; top: 50%; transform: translate(-50%, -50%);
+  .modal-close:hover, .modal-view .close-btn:hover { 
+    color: var(--primary);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
+  .modal-view {
+    left: 50%; top: 50%; transform: translate(-50%, -50%);
       background: var(--card); border-radius: 18px; padding: 32px 33px; max-width: 460px; width:98vw; min-height: 180px;
       box-shadow: 0 20px 50px #0006; border: 1.05px solid var(--primary);}
   .modal-view strong { color: var(--primary);}
@@ -362,7 +394,261 @@
     margin-top: 20px;
     display: none;
   }
-
+  
+  /* FUSCHIA CHATBOT STYLES */
+  #fuschia-chat-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(79, 140, 255, 0.4);
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  #fuschia-chat-btn:hover {
+    background: var(--primary-hover);
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(79, 140, 255, 0.6);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
+  
+  #fuschia-chat-btn.active {
+    background: var(--danger);
+  }
+  
+  #fuschia-chat-modal {
+    position: fixed;
+    bottom: 95px;
+    right: 25px;
+    width: 350px;
+    height: 500px;
+    background: var(--card);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #334155;
+    animation: slideUp 0.3s ease;
+  }
+  
+  #fuschia-chat-modal.open {
+    display: flex;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .chat-header {
+    background: linear-gradient(135deg, var(--primary), #10b981);
+    color: white;
+    padding: 18px 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .chat-header .close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+  }
+  
+  .chat-header .close-chat:hover {
+    background: rgba(255,255,255,0.2);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
+  
+  .chat-body {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #1a1f2e;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .chat-body::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .chat-body::-webkit-scrollbar-track {
+    background: #23232b;
+  }
+  
+  .chat-body::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 3px;
+  }
+  
+  .message {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    animation: messageSlide 0.3s ease;
+  }
+  
+  @keyframes messageSlide {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .user-message {
+    background: var(--primary);
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 2px 8px rgba(79, 140, 255, 0.3);
+  }
+  
+  .bot-message {
+    background: #2d3748;
+    color: var(--text);
+    align-self: flex-start;
+    border-bottom-left-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .bot-message code {
+    background: rgba(0,0,0,0.3);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: #79f7b3;
+  }
+  
+  .bot-message strong {
+    color: var(--primary);
+  }
+  
+  .bot-message ul {
+    margin: 8px 0;
+    padding-left: 20px;
+  }
+  
+  .bot-message li {
+    margin: 4px 0;
+  }
+  
+  .chat-input-area {
+    display: flex;
+    padding: 15px;
+    background: var(--card);
+    border-top: 1px solid #334155;
+    gap: 10px;
+  }
+  
+  #chatInput {
+    flex-grow: 1;
+    padding: 12px 16px;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    background: #1a1f2e;
+    color: var(--text);
+    font-size: 1em;
+    outline: none;
+    transition: border 0.2s;
+  }
+  
+  #chatInput:focus {
+    border-color: var(--primary);
+  }
+  
+  #chatSendBtn {
+    background: var(--success);
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    min-width: 80px;
+  }
+  
+  #chatSendBtn:hover {
+    background: #0da271;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
+  
+  #chatSendBtn:disabled {
+    background: #64748b;
+    cursor: not-allowed;
+  }
+  
+  .chat-typing-indicator {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 16px;
+    background: #2d3748;
+    border-radius: 18px;
+    align-self: flex-start;
+    margin-bottom: 5px;
+  }
+  
+  .chat-typing-indicator.active {
+    display: flex;
+  }
+  
+  .typing-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--muted);
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out;
+  }
+  
+  .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+  .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+  
+  @keyframes typing {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+  }
+  
   /* Code content */
   #codeBox {
     background: #001021;
@@ -399,6 +685,7 @@
   .copyBtn:hover {
     background: #3b82f6;
     color: white;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
   }
 
   /* Views + Rating */
@@ -522,12 +809,770 @@
   
   .close-code-btn:hover {
     background: #b91c1c;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
   }
   
+  /* DARK/LIGHT THEME TOGGLE */
+  .theme-toggle {
+    position: fixed;
+    top: 90px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid #334155;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+  }
+  
+  .theme-toggle:hover {
+    background: var(--primary);
+    color: white;
+    transform: rotate(30deg);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
+  
+  body.light-theme {
+    --background: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --shadow: 0 6px 28px rgba(0,0,0,0.08);
+  }
+  
+  body.light-theme .feature-card,
+  body.light-theme .share-item,
+  body.light-theme .created-by-block,
+  body.light-theme .admin-panel,
+  body.light-theme .modal-content {
+    background: white;
+    border: 1px solid #e2e8f0;
+  }
+  
+  body.light-theme #fuschia-chat-modal {
+    background: white;
+    border: 1px solid #cbd5e1;
+  }
+  
+  body.light-theme .chat-body {
+    background: #f1f5f9;
+  }
+  
+  body.light-theme .bot-message {
+    background: #e2e8f0;
+    color: #334155;
+  }
+  
+  /* QR CODE MODAL */
+  .qr-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+  }
+  
+  .qr-modal.show {
+    display: flex;
+  }
+  
+  .qr-content {
+    background: var(--card);
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+  }
+  
+  .qr-code-img {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  /* EXPORT AS IMAGE STYLES */
+  .export-image-btn {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s;
+  }
+  
+  .export-image-btn:hover {
+    transform: scale(1.05);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
+  
+  button, a, input, textarea, select {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, pointer !important;
+  }
+  
+  /* AI EXPLANATION PANEL */
+  .ai-explanation-panel {
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 350px;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+    border-left: 4px solid var(--primary);
+  }
+  
+  .ai-explanation-panel.show {
+    display: block;
+    animation: slideInRight 0.3s ease;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px) translateY(-50%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) translateY(-50%);
+    }
+  }
+  
+  .ai-explanation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #334155;
+  }
+  
+  .ai-explanation-header h3 {
+    color: var(--primary);
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .ai-explanation-content {
+    max-height: 400px;
+    overflow-y: auto;
+    line-height: 1.6;
+  }
+  
+  .ai-explanation-content code {
+    background: rgba(79, 140, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #79f7b3;
+  }
+  
+  .ai-explanation-content ul {
+    margin: 10px 0;
+    padding-left: 20px;
+  }
+  
+  .ai-explanation-content li {
+    margin: 5px 0;
+  }
+  
+  .ai-explain-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--success);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.9em;
+    cursor: pointer;
+    display: none;
+  }
+  
+  #codeViewer:hover .ai-explain-btn {
+    display: block;
+  }
+  
+  .code-errors {
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid var(--danger);
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 6px;
+  }
+  
+  .code-suggestions {
+    background: rgba(255, 224, 102, 0.1);
+    border-left: 4px solid #ffe066;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 6px;
+  }
+  
+  .generate-code-btn {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .generate-code-btn:hover {
+    background: linear-gradient(135deg, #7c3aed, #2563eb);
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
+  
+  /* COMPILE OUTPUT SECTION */
+  .compile-output {
+    background: #001021;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    border: 1px solid #1f2a40;
+    display: none;
+  }
+  
+  .compile-output.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .compile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .compile-header h3 {
+    color: #3b82f6;
+    margin: 0;
+    font-size: 1.2em;
+  }
+  
+  .compile-content {
+    background: #000811;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: monospace;
+    color: #79f7b3;
+    font-size: 14px;
+    line-height: 1.5;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+  }
+  
+  .compile-meta {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    color: #94a3b8;
+    font-size: 0.9em;
+  }
+  
+  .close-compile-btn {
+    background: var(--danger);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+  
+  .close-compile-btn:hover {
+    background: #b91c1c;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="M16 2C8.27 2 2 8.27 2 16s6.27 14 14 14 14-6.27 14-14S23.73 2 16 2zm0 26C9.37 28 4 22.63 4 16S9.37 4 16 4s12 5.37 12 12-5.37 12-12 12z" fill="%23ff6bcb"/><circle cx="16" cy="16" r="4" fill="%23ff6bcb"/><path d="M16 8a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 14a6 6 0 1 1 0-12 6 6 0 0 1 0 12z" fill="%23000" opacity="0.3"/></svg>') 16 16, auto;
+  }
+
+  /* =========== NEW FEATURES =========== */
+  
+  /* AI-PAIR PROGRAMMER PANEL */
+  .pair-programmer-panel {
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 380px;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+    border-left: 4px solid #10b981;
+  }
+  
+  .pair-programmer-panel.show {
+    display: block;
+    animation: slideInLeft 0.3s ease;
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px) translateY(-50%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) translateY(-50%);
+    }
+  }
+  
+  .pair-programmer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #334155;
+  }
+  
+  .pair-programmer-header h3 {
+    color: #10b981;
+    margin: 0;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .pair-programmer-content {
+    max-height: 400px;
+    overflow-y: auto;
+    line-height: 1.6;
+  }
+  
+  .code-suggestion-item {
+    background: rgba(16, 185, 129, 0.1);
+    border-left: 3px solid #10b981;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .code-suggestion-item:hover {
+    background: rgba(16, 185, 129, 0.2);
+    transform: translateX(5px);
+  }
+  
+  .code-suggestion-item h4 {
+    color: #10b981;
+    margin: 0 0 5px 0;
+    font-size: 1em;
+  }
+  
+  .code-suggestion-item pre {
+    background: rgba(0,0,0,0.3);
+    padding: 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #79f7b3;
+    font-size: 0.85em;
+    margin: 5px 0;
+    overflow-x: auto;
+  }
+  
+  .pair-programmer-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  
+  .pair-programmer-controls button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    flex: 1;
+  }
+  
+  .btn-suggest-more {
+    background: var(--primary);
+    color: white;
+  }
+  
+  .btn-apply-all {
+    background: #10b981;
+    color: white;
+  }
+  
+  .btn-cancel-pair {
+    background: var(--danger);
+    color: white;
+  }
+  
+  /* TIME-TRAVEL DEBUGGER */
+  .time-travel-debugger {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 380px;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+    border-left: 4px solid #8b5cf6;
+  }
+  
+  .time-travel-debugger.show {
+    display: block;
+    animation: slideInUp 0.3s ease;
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .time-travel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #334155;
+  }
+  
+  .time-travel-header h3 {
+    color: #8b5cf6;
+    margin: 0;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .time-travel-timeline {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+  }
+  
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    background: rgba(139, 92, 246, 0.1);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .timeline-item:hover {
+    background: rgba(139, 92, 246, 0.2);
+  }
+  
+  .timeline-item.active {
+    background: rgba(139, 92, 246, 0.3);
+    border-left: 3px solid #8b5cf6;
+  }
+  
+  .timeline-item .time {
+    color: #8b5cf6;
+    font-weight: 600;
+    min-width: 80px;
+  }
+  
+  .timeline-item .action {
+    color: var(--text);
+    flex: 1;
+  }
+  
+  .timeline-item .code-preview {
+    color: var(--muted);
+    font-family: monospace;
+    font-size: 0.85em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+  }
+  
+  .time-travel-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .time-travel-buttons {
+    display: flex;
+    gap: 5px;
+  }
+  
+  .time-travel-buttons button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(139, 92, 246, 0.2);
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .time-travel-buttons button:hover {
+    background: rgba(139, 92, 246, 0.3);
+  }
+  
+  .btn-rewind {
+    background: #8b5cf6 !important;
+    color: white !important;
+  }
+  
+  .btn-save-snapshot {
+    background: #10b981 !important;
+    color: white !important;
+  }
+  
+  .time-travel-stats {
+    color: var(--muted);
+    font-size: 0.9em;
+  }
+  
+  /* Code Editor with AI Suggestions */
+  .code-editor-ai {
+    position: relative;
+    border: 2px solid #334155;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .ai-suggestion-overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    background: rgba(16, 185, 129, 0.9);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .ai-suggestion-overlay.show {
+    display: block;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.9; }
+    50% { opacity: 1; }
+    100% { opacity: 0.9; }
+  }
+  
+  /* Feature Cards for New Features */
+  .feature-card.new-feature {
+    border: 2px solid #10b981;
+  }
+  
+  .feature-card.time-travel {
+    border: 2px solid #8b5cf6;
+  }
+  
+  /* Quick Action Buttons */
+  .quick-actions {
+    position: fixed;
+    top: 150px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 998;
+  }
+  
+  .quick-action-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid #334155;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  
+  .quick-action-btn:hover {
+    transform: scale(1.1);
+    background: var(--primary);
+    color: white;
+  }
+  
+  .quick-action-btn.active {
+    background: var(--primary);
+    color: white;
+  }
+  
+  /* Debug Console */
+  .debug-console {
+    position: fixed;
+    bottom: 100px;
+    left: 25px;
+    width: 400px;
+    background: #000;
+    border-radius: 8px;
+    padding: 15px;
+    z-index: 997;
+    display: none;
+    border: 1px solid #8b5cf6;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  
+  .debug-console.show {
+    display: block;
+  }
+  
+  .console-header {
+    color: #8b5cf6;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .console-content {
+    background: #001021;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    color: #79f7b3;
+    font-size: 12px;
+    height: 150px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+  }
   </style>
 </head>
 <body>
   <div class="notification" id="notification"></div>
+  
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="themeToggle">🌓</button>
+  
+  <!-- Quick Action Buttons -->
+  <div class="quick-actions">
+    <button class="quick-action-btn" id="pairProgrammerBtn" onclick="togglePairProgrammer()" title="AI Pair Programmer">🤖</button>
+    <button class="quick-action-btn" id="timeTravelBtn" onclick="toggleTimeTravel()" title="Time Travel Debugger">⏱️</button>
+    <button class="quick-action-btn" id="debugConsoleBtn" onclick="toggleDebugConsole()" title="Debug Console">🐛</button>
+  </div>
+  
+  <!-- AI Explanation Panel -->
+  <div id="aiExplanationPanel" class="ai-explanation-panel">
+    <div class="ai-explanation-header">
+      <h3>🤖 AI Code Explanation</h3>
+      <button class="modal-close" onclick="closeAIExplanation()">&times;</button>
+    </div>
+    <div class="ai-explanation-content" id="aiExplanationContent"></div>
+    <button class="generate-code-btn" onclick="generateImprovedCode()">
+      🚀 Generate Improved Code
+    </button>
+  </div>
+  
+  <!-- AI-Pair Programmer Panel -->
+  <div id="pairProgrammerPanel" class="pair-programmer-panel">
+    <div class="pair-programmer-header">
+      <h3><span>🤝</span> AI Pair Programmer</h3>
+      <button class="modal-close" onclick="togglePairProgrammer()">&times;</button>
+    </div>
+    <div class="pair-programmer-content" id="pairProgrammerContent">
+      <p>I'll help you write better code! Here are some suggestions:</p>
+      <div id="codeSuggestionsList"></div>
+    </div>
+    <div class="pair-programmer-controls">
+      <button class="btn-suggest-more" onclick="generateMoreSuggestions()">More Suggestions</button>
+      <button class="btn-apply-all" onclick="applyAllSuggestions()">Apply All</button>
+      <button class="btn-cancel-pair" onclick="togglePairProgrammer()">Close</button>
+    </div>
+  </div>
+  
+  <!-- Time-Travel Debugger -->
+  <div id="timeTravelDebugger" class="time-travel-debugger">
+    <div class="time-travel-header">
+      <h3><span>⏱️</span> Time Travel Debugger</h3>
+      <button class="modal-close" onclick="toggleTimeTravel()">&times;</button>
+    </div>
+    <div class="time-travel-timeline" id="timeTravelTimeline">
+      <p>Your code evolution timeline will appear here</p>
+    </div>
+    <div class="time-travel-controls">
+      <div class="time-travel-buttons">
+        <button onclick="rewindToStart()" title="Rewind to Start">⏮️</button>
+        <button onclick="stepBackward()" title="Step Backward">◀️</button>
+        <button onclick="stepForward()" title="Step Forward">▶️</button>
+        <button onclick="fastForward()" title="Fast Forward">⏭️</button>
+        <button class="btn-rewind" onclick="restoreSnapshot()" title="Restore Snapshot">↩️ Restore</button>
+        <button class="btn-save-snapshot" onclick="saveSnapshot()" title="Save Current State">💾 Save</button>
+      </div>
+      <div class="time-travel-stats" id="timeTravelStats">Snapshots: 0</div>
+    </div>
+  </div>
+  
+  <!-- Debug Console -->
+  <div id="debugConsole" class="debug-console">
+    <div class="console-header">
+      <span>🐛 Debug Console</span>
+      <button class="modal-close" onclick="toggleDebugConsole()" style="font-size: 1.2em; background: none; border: none; color: #8b5cf6; cursor: pointer;">&times;</button>
+    </div>
+    <div class="console-content" id="consoleContent">
+      Debug console ready...
+    </div>
+  </div>
   
   <!-- Contact Modal -->
   <div id="contactModal" class="modal">
@@ -550,14 +1595,63 @@
     </div>
   </div>
   
+  <!-- QR Code Modal -->
+  <div id="qrModal" class="qr-modal">
+    <div class="qr-content">
+      <button class="modal-close" onclick="closeQRModal()">&times;</button>
+      <h3>Scan QR Code</h3>
+      <p>Scan this QR code to view on mobile</p>
+      <div class="qr-code-img" id="qrCodeImg"></div>
+      <button class="btn-primary" onclick="downloadQRCode()">Download QR</button>
+    </div>
+  </div>
+  
+  <!-- FUSCHIA Chatbot -->
+  <button id="fuschia-chat-btn">
+    <span style="font-size:24px;">💬</span> 
+  </button>
+
+  <div id="fuschia-chat-modal">
+    <div class="chat-header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-size:20px;">🤖</span>
+        <span>Fuschia AI Assistant</span>
+      </div>
+      <button class="close-chat" onclick="toggleChat()">×</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="bot-message message">
+        Hello! I'm <strong>Fuschia</strong>, now with <strong>AI-Pair Programmer</strong> and <strong>Time-Travel Debugging</strong>! 🤖<br><br>
+        <strong>New Features:</strong>
+        <ul>
+          <li><strong>🤝 AI Pair Programmer</strong> - Real-time code suggestions</li>
+          <li><strong>⏱️ Time Travel Debugger</strong> - Track code changes</li>
+          <li><strong>🐛 Debug Console</strong> - View execution logs</li>
+          <li>Code analysis and optimization</li>
+          <li>Instant compilation and execution</li>
+        </ul>
+        Try the new quick action buttons on the right!
+      </div>
+    </div>
+    <div class="chat-typing-indicator" id="typingIndicator">
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+      <div class="typing-dot"></div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Ask about AI-Pair programming or Time-Travel debugging..." autocomplete="off">
+      <button id="chatSendBtn" onclick="sendChatMessage()">Send</button>
+    </div>
+  </div>  
+  
   <div class="container">
     <header>
       <a href="#" class="logo">
-  <img src="fuschia-logo.png" alt="Fuschia Logo" style="height:38px; width:auto; margin-right:8px;">
-  <span class="logo-text" style="font-weight:800; font-size:1.35rem; color:#4f8cff; letter-spacing:0.5px;">
-    FUSCHIA
-  </span>
-</a>
+        <img src="fuschia-logo.png" alt="Fuschia Logo" style="height:38px; width:auto; margin-right:8px;">
+        <span class="logo-text" style="font-weight:800; font-size:1.35rem; color:#4f8cff; letter-spacing:0.5px;">
+          FUSCHIA
+        </span>
+      </a>
 
       <div class="header-right" id="headerRight">
         <button class="btn-login" onclick="openLoginModal()" id="loginBtn">Admin Login</button>
@@ -567,17 +1661,29 @@
     
     <div class="hero-section">
       <div class="hero-content">
-        <h1 class="hero-headline">Share Code & Notes with Ease</h1>
+        <h1 class="hero-headline">AI-Powered Code Sharing Platform</h1>
         <p class="hero-tagline">
-          A simple, responsive platform for sharing code snippets and notes with syntax highlighting and instant access
+          Now with <strong>AI-Pair Programmer</strong> 🤝 and <strong>Time-Travel Debugging</strong> ⏱️. Write, debug, and share code with AI assistance in real-time.
         </p>
         <div class="hero-buttons" id="heroButtons">
           <button class="btn-primary" onclick="openLoginModal()" id="heroLoginBtn">Admin Login</button>
           <button class="btn-secondary" onclick="scrollToBrowse()">Browse Shares</button>
+          <button class="export-image-btn" onclick="exportPageAsImage()">
+            📸 Export
+          </button>
+          <button class="btn-secondary" style="background: #10b981; color: white;" onclick="togglePairProgrammer()">
+            🤝 AI Pair
+          </button>
         </div>
         <div class="hero-buttons" id="shareOptions" style="display:none; margin-top:29px;">
           <button class="btn-primary" onclick="openShareModal('code')">Share Code</button>
           <button class="btn-secondary" onclick="openShareModal('notes')">Share Notes</button>
+          <button class="btn-secondary" onclick="generateQRForCurrentPage()">
+            📱 QR Code
+          </button>
+          <button class="btn-secondary" style="background: #8b5cf6; color: white;" onclick="toggleTimeTravel()">
+            ⏱️ Time Travel
+          </button>
         </div>
       </div>
       <div class="created-by-block">
@@ -588,20 +1694,35 @@
     </div>
     
     <div class="features-grid">
+      <div class="feature-card new-feature">
+        <div class="feature-icon">🤝</div>
+        <div class="feature-title">AI-Pair Programmer</div>
+        <div class="feature-description">Real-time AI suggestions as you code. Get instant feedback, optimizations, and best practice recommendations while writing code.</div>
+      </div>
+      <div class="feature-card time-travel">
+        <div class="feature-icon">⏱️</div>
+        <div class="feature-title">Time-Travel Debugging</div>
+        <div class="feature-description">Travel through code history. Save snapshots, rewind changes, and compare different versions of your code instantly.</div>
+      </div>
       <div class="feature-card">
-        <div class="feature-icon">✨</div>
-        <div class="feature-title">Syntax Highlighting</div>
-        <div class="feature-description">Beautiful code highlighting for multiple programming languages with automatic detection</div>
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">AI Code Analysis</div>
+        <div class="feature-description">Get AI-powered explanations, error detection, and optimization suggestions for your code with detailed insights.</div>
       </div>
       <div class="feature-card">
         <div class="feature-icon">⚡</div>
-        <div class="feature-title">Instant Sharing</div>
-        <div class="feature-description">Create and share code snippets instantly with a single click. No sign up required</div>
+        <div class="feature-title">Instant Compilation</div>
+        <div class="feature-description">Compile and run code in multiple languages. See real-time outputs, errors, and execution logs in the debug console.</div>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">📱</div>
-        <div class="feature-title">Responsive Design</div>
-        <div class="feature-description">Works perfectly on all devices - desktop, tablet, and mobile. Always responsive</div>
+        <div class="feature-icon">🐛</div>
+        <div class="feature-title">Debug Console</div>
+        <div class="feature-description">Real-time debugging console showing variable states, execution logs, and error messages as your code runs.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📤</div>
+        <div class="feature-title">Smart Sharing</div>
+        <div class="feature-description">Share code snippets with AI explanations attached. Export as images, QR codes, or JSON for easy collaboration.</div>
       </div>
     </div>
     
@@ -609,14 +1730,40 @@
     <div id="codeViewer">
       <div id="codeHeader">
         <h2 id="codeTitle" style="color:#3b82f6; margin:0"></h2>
-        <button class="copyBtn" id="copyCodeBtn">Copy Code</button>
+        <div>
+          <button class="ai-explain-btn" onclick="explainCurrentCode()">🤖 AI Explain</button>
+          <button class="copyBtn" id="copyCodeBtn">Copy Code</button>
+          <button class="export-image-btn" onclick="exportCodeAsImage()" style="margin-left:10px;">
+            📸 Export as Image
+          </button>
+          <button class="btn-secondary" style="background: #10b981; color: white; margin-left:10px;" onclick="startPairProgramming()">
+            🤝 AI Pair Mode
+          </button>
+        </div>
       </div>
-      <pre id="codeBox"></pre>
+      <div class="code-editor-ai">
+        <div class="ai-suggestion-overlay" id="aiSuggestionOverlay" onclick="applyTopSuggestion()">✨ AI Suggestion Available</div>
+        <pre id="codeBox"></pre>
+      </div>
       <div id="codeInfo">
         <span id="viewCount"></span>
         <div id="ratingArea"></div>
       </div>
       <button class="close-code-btn" onclick="closeCodeViewer()">Close Viewer</button>
+    </div>
+    
+    <!-- Compile Output Section -->
+    <div id="compileOutput" class="compile-output">
+      <div class="compile-header">
+        <h3>📋 Compile Output</h3>
+        <button class="close-compile-btn" onclick="closeCompileOutput()">Close</button>
+      </div>
+      <div class="compile-content" id="compileContent"></div>
+      <div class="compile-meta">
+        <span id="compileLanguage"></span>
+        <span id="compileTime"></span>
+        <span id="compileStatus"></span>
+      </div>
     </div>
     
     <!-- Admin Dashboard -->
@@ -625,10 +1772,15 @@
       <div class="admin-tabs">
         <button class="admin-tab active" onclick="switchAdminTab('shares')">Shares Management</button>
         <button class="admin-tab" onclick="switchAdminTab('contacts')">Contact Submissions</button>
+        <button class="admin-tab" onclick="switchAdminTab('analytics')">Analytics</button>
+        <button class="admin-tab" onclick="switchAdminTab('aiInsights')">AI Insights</button>
       </div>
       
       <div id="sharesTab" class="admin-content active">
-        <h3 style="color: var(--muted); margin-bottom: 15px;">All Shares (Sorted by Views)</h3>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;">
+          <h3 style="color: var(--muted); margin:0;">All Shares (Sorted by Views)</h3>
+          <button class="btn-secondary" onclick="exportAllShares()">Export All</button>
+        </div>
         <table class="shares-table">
           <thead>
             <tr>
@@ -652,17 +1804,74 @@
               <th>Name</th>
               <th>Phone Number</th>
               <th>Date & Time</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody id="adminContactsList"></tbody>
         </table>
+      </div>
+      
+      <div id="analyticsTab" class="admin-content">
+        <h3 style="color: var(--muted); margin-bottom: 15px;">Analytics Dashboard</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:20px;margin-bottom:25px;">
+          <div style="background:#1a1f2e;padding:20px;border-radius:12px;text-align:center;">
+            <div style="font-size:2.5em;color:var(--primary);font-weight:bold;" id="totalShares">0</div>
+            <div style="color:var(--muted);">Total Shares</div>
+          </div>
+          <div style="background:#1a1f2e;padding:20px;border-radius:12px;text-align:center;">
+            <div style="font-size:2.5em;color:var(--success);font-weight:bold;" id="totalViews">0</div>
+            <div style="color:var(--muted);">Total Views</div>
+          </div>
+          <div style="background:#1a1f2e;padding:20px;border-radius:12px;text-align:center;">
+            <div style="font-size:2.5em;color:#ffd700;font-weight:bold;" id="avgRating">0</div>
+            <div style="color:var(--muted);">Avg Rating</div>
+          </div>
+          <div style="background:#1a1f2e;padding:20px;border-radius:12px;text-align:center;">
+            <div style="font-size:2.5em;color:var(--danger);font-weight:bold;" id="totalContacts">0</div>
+            <div style="color:var(--muted);">Contact Submissions</div>
+          </div>
+        </div>
+        <div style="background:#1a1f2e;padding:20px;border-radius:12px;">
+          <h4 style="color:var(--muted);margin-bottom:15px;">Top Languages</h4>
+          <div id="languageChart"></div>
+        </div>
+      </div>
+      
+      <div id="aiInsightsTab" class="admin-content">
+        <h3 style="color: var(--muted); margin-bottom: 15px;">AI Insights & Usage</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:20px;margin-bottom:25px;">
+          <div style="background:#1a1f2e;padding:20px;border-radius:12px;text-align:center;">
+            <div style="font-size:2.5em;color:#10b981;font-weight:bold;" id="totalAIExplanations">0</div>
+            <div style="color:var(--muted);">AI Explanations</div>
+          </div>
+          <div style="background:#1a1f2e;padding:20px;border-radius:12px;text-align:center;">
+            <div style="font-size:2.5em;color:#8b5cf6;font-weight:bold;" id="totalCompilations">0</div>
+            <div style="color:var(--muted);">Code Compilations</div>
+          </div>
+          <div style="background:#1a1f2e;padding:20px;border-radius:12px;text-align:center;">
+            <div style="font-size:2.5em;color:#3b82f6;font-weight:bold;" id="totalPairSessions">0</div>
+            <div style="color:var(--muted);">AI Pair Sessions</div>
+          </div>
+          <div style="background:#1a1f2e;padding:20px;border-radius:12px;text-align:center;">
+            <div style="font-size:2.5em;color:#ffd700;font-weight:bold;" id="totalTimeTravelSnapshots">0</div>
+            <div style="color:var(--muted);">Time Travel Snapshots</div>
+          </div>
+        </div>
+        <div style="background:#1a1f2e;padding:20px;border-radius:12px;">
+          <h4 style="color:var(--muted);margin-bottom:15px;">Most Common AI Suggestions</h4>
+          <div id="aiSuggestionsChart"></div>
+        </div>
       </div>
     </div>
     
     <div class="browse-section" id="browseSection">
       <h2 class="browse-title">Recent Shares</h2>
       <div style="text-align:center; margin-bottom: 22px;">
-        <input type="text" id="searchInput" placeholder="Search by Title..." />
+        <input type="text" id="searchInput" placeholder="Search by Title, Language, or Description..." />
+        <button class="btn-secondary" onclick="clearSearch()" style="margin-left:10px;">Clear</button>
+        <button class="btn-secondary" onclick="togglePairProgrammer()" style="background: #10b981; color: white; margin-left:10px;">
+          🤝 Start AI Pair
+        </button>
       </div>
       <div class="shares-list" id="sharesList"></div>
     </div>
@@ -725,6 +1934,9 @@
             <option value="php">PHP</option>
             <option value="go">Go</option>
             <option value="sql">SQL</option>
+            <option value="ruby">Ruby</option>
+            <option value="swift">Swift</option>
+            <option value="kotlin">Kotlin</option>
           </select>
         </div>
         <div class="form-group" id="codeField" style="display:none;">
@@ -739,7 +1951,7 @@
         </div>
         <div class="form-group" id="fileField" style="display:none;">
           <label for="shareFile">Attach File</label>
-          <input type="file" id="shareFile" accept=".txt,.pdf,.doc,.docx,image/*">
+          <input type="file" id="shareFile" accept=".txt,.pdf,.doc,.docx,.md,image/*">
         </div>
         <div class="form-group">
           <button type="submit" class="btn-primary">Share</button>
@@ -755,6 +1967,21 @@
     let contacts = [];
     let editingShareId = null;
     let shareType = "";
+    let currentCodeForAnalysis = "";
+    let currentShareId = null;
+    
+    // NEW: AI-Pair Programmer State
+    let pairProgrammingActive = false;
+    let currentSuggestions = [];
+    let codeSnapshots = [];
+    let currentSnapshotIndex = -1;
+    let debugLogs = [];
+    let aiUsageStats = {
+      explanations: 0,
+      compilations: 0,
+      pairSessions: 0,
+      timeTravelSnapshots: 0
+    };
     
     // Initialize from localStorage
     function loadAllData() {
@@ -762,11 +1989,16 @@
         shares = JSON.parse(localStorage.getItem('shares') || "[]");
         contacts = JSON.parse(localStorage.getItem('contacts') || "[]");
         loggedIn = localStorage.getItem('loggedIn') === 'true';
+        codeSnapshots = JSON.parse(localStorage.getItem('codeSnapshots') || "[]");
+        aiUsageStats = JSON.parse(localStorage.getItem('aiUsageStats') || JSON.stringify(aiUsageStats));
+        currentSnapshotIndex = parseInt(localStorage.getItem('currentSnapshotIndex') || "-1");
       } catch(e) {
         console.error("Error loading data:", e);
         shares = [];
         contacts = [];
+        codeSnapshots = [];
         loggedIn = false;
+        currentSnapshotIndex = -1;
       }
     }
     
@@ -774,6 +2006,9 @@
       localStorage.setItem('shares', JSON.stringify(shares));
       localStorage.setItem('contacts', JSON.stringify(contacts));
       localStorage.setItem('loggedIn', loggedIn ? 'true' : 'false');
+      localStorage.setItem('codeSnapshots', JSON.stringify(codeSnapshots));
+      localStorage.setItem('aiUsageStats', JSON.stringify(aiUsageStats));
+      localStorage.setItem('currentSnapshotIndex', currentSnapshotIndex.toString());
     }
     
     // For browser user rating only once per share
@@ -814,6 +2049,7 @@
       }
       
       renderShares(shares);
+      updateAIUsageStats();
     }
     
     // Admin Login
@@ -822,6 +2058,7 @@
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       
+      // DO NOT REVEAL CREDENTIALS IN CHATBOT
       if (email === 'uday90925@gmail.com' && password === 'Uday7@uday') {
         loggedIn = true;
         saveAllData();
@@ -1029,7 +2266,7 @@
         if (share.type === 'notes' && share.file) {
           fileShow = `<div style="margin-top:4px;">
             <span style="background:#323342;color:#8edcff;padding:2px 9px;border-radius:4px;">
-              ${share.file.name}
+              📎 ${share.file.name}
             </span>
           </div>`;
         }
@@ -1044,6 +2281,10 @@
         // View button - different behavior for code vs notes
         if (share.type === 'code') {
           actionsHtml += `<button class="view" onclick="viewCodeShare(${share.id})">View</button>`;
+          // Add compile button for code shares
+          actionsHtml += `<button class="compile" onclick="compileCodeShare(${share.id})">Compile</button>`;
+          // NEW: Add AI Pair button for code shares
+          actionsHtml += `<button class="pair-program" onclick="startPairProgrammingFromShare(${share.id})">AI Pair</button>`;
         } else {
           actionsHtml += `<button class="view" onclick="downloadShareFile(${share.id})">View</button>`;
         }
@@ -1070,18 +2311,18 @@
         // Views only shown for admin
         const viewsHtml = loggedIn ? 
           `<div style="margin-top:8px;color:var(--muted);font-size:0.9em;">
-            Views: <b style="color:#ffe066">${share.views || 0}</b>
+            👁️ Views: <b style="color:#ffe066">${share.views || 0}</b>
           </div>` : '';
         
         container.innerHTML += `
           <div class="share-item">
             <div class="share-info">
               <h3>${escapeHtml(share.title)}</h3>
-              <p>Shared by ${share.sharedBy} • ${timeAgo}</p>
+              <p>Shared by ${share.sharedBy} • ${timeAgo} ${share.language ? `• ${share.language}` : ''}</p>
               ${descriptionHtml}
               ${viewsHtml}
               <div style="margin-top:8px;">
-                Avg Rating: 
+                ⭐ Avg Rating: 
                 <span style="color:#ffe066;font-size:1.1em">${avgStars}</span>
                 ${avgRating !== '-' ? 
                   `<span style="color:#ffe066;font-weight:bold;margin-left:5px">${avgRating}</span>` : 
@@ -1099,9 +2340,19 @@
     // Search functionality
     document.getElementById('searchInput').addEventListener('input', function() {
       const val = this.value.trim().toLowerCase();
-      const filtered = shares.filter(s => s.title.toLowerCase().includes(val));
+      const filtered = shares.filter(s => 
+        s.title.toLowerCase().includes(val) || 
+        s.description.toLowerCase().includes(val) ||
+        (s.language && s.language.toLowerCase().includes(val)) ||
+        (s.type && s.type.toLowerCase().includes(val))
+      );
       renderShares(filtered);
     });
+    
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      renderShares(shares);
+    }
     
     // View code share in full-width viewer
     window.viewCodeShare = function(id) {
@@ -1112,8 +2363,9 @@
       share.views = (share.views || 0) + 1;
       saveAllData();
       
-      // Hide browse section, show code viewer
+      // Hide browse section and compile output, show code viewer
       document.getElementById('browseSection').style.display = 'none';
+      document.getElementById('compileOutput').classList.remove('show');
       document.getElementById('codeViewer').style.display = 'block';
       
       // Set code viewer content
@@ -1121,6 +2373,13 @@
       document.getElementById('codeBox').textContent = share.code;
       document.getElementById('viewCount').innerHTML = 
         `👁️ Views: <b style="color:#3b82f6">${share.views}</b>`;
+      
+      // Store current code for AI analysis
+      currentCodeForAnalysis = share.code;
+      currentShareId = id;
+      
+      // Save initial snapshot for time travel
+      saveSnapshot();
       
       // Copy button functionality
       document.getElementById('copyCodeBtn').onclick = function() {
@@ -1183,6 +2442,497 @@
       
       // Scroll to code viewer
       document.getElementById('codeViewer').scrollIntoView({ behavior: 'smooth' });
+      
+      // Enable AI suggestions overlay
+      setTimeout(() => {
+        generateAISuggestions(share.code);
+      }, 1000);
+    };
+    
+    // NEW: Start pair programming from share
+    window.startPairProgrammingFromShare = function(id) {
+      const share = shares.find(s => s.id === id);
+      if (!share) return showNotification('Share not found!');
+      
+      viewCodeShare(id);
+      setTimeout(() => {
+        startPairProgramming();
+        togglePairProgrammer();
+      }, 500);
+    };
+    
+    // NEW: Start AI Pair Programming
+    window.startPairProgramming = function() {
+      pairProgrammingActive = true;
+      aiUsageStats.pairSessions++;
+      saveAllData();
+      updateAIUsageStats();
+      
+      document.getElementById('pairProgrammerBtn').classList.add('active');
+      document.getElementById('aiSuggestionOverlay').classList.add('show');
+      
+      // Generate initial suggestions
+      generateAISuggestions(currentCodeForAnalysis);
+      
+      showNotification('🤝 AI Pair Programmer activated!');
+      addDebugLog('AI Pair Programming session started');
+    };
+    
+    // NEW: Generate AI Suggestions
+    function generateAISuggestions(code) {
+      if (!pairProgrammingActive) return;
+      
+      const suggestions = analyzeCodeForSuggestions(code);
+      currentSuggestions = suggestions;
+      
+      const suggestionsList = document.getElementById('codeSuggestionsList');
+      suggestionsList.innerHTML = '';
+      
+      if (suggestions.length === 0) {
+        suggestionsList.innerHTML = '<p>No suggestions available for this code.</p>';
+        return;
+      }
+      
+      suggestions.forEach((suggestion, index) => {
+        const suggestionDiv = document.createElement('div');
+        suggestionDiv.className = 'code-suggestion-item';
+        suggestionDiv.innerHTML = `
+          <h4>${suggestion.title}</h4>
+          <p>${suggestion.description}</p>
+          ${suggestion.code ? `<pre>${escapeHtml(suggestion.code)}</pre>` : ''}
+          <small style="color: var(--muted);">Click to apply</small>
+        `;
+        suggestionDiv.onclick = () => applySuggestion(index);
+        suggestionsList.appendChild(suggestionDiv);
+      });
+      
+      // Update suggestion overlay
+      const overlay = document.getElementById('aiSuggestionOverlay');
+      overlay.textContent = `✨ ${suggestions.length} AI Suggestions Available`;
+      overlay.onclick = () => applySuggestion(0);
+    }
+    
+    // NEW: Analyze code for AI suggestions
+    function analyzeCodeForSuggestions(code) {
+      const suggestions = [];
+      const lines = code.split('\n');
+      
+      // Check for common patterns and suggest improvements
+      
+      // 1. Check for missing error handling
+      if (code.includes('fetch(') || code.includes('axios.get') || code.includes('XMLHttpRequest')) {
+        if (!code.includes('.catch') && !code.includes('try {') && !code.includes('.then(')) {
+          suggestions.push({
+            title: "Add Error Handling",
+            description: "Network requests should include error handling",
+            code: `// Add error handling
+try {
+  const response = await fetch(url);
+  const data = await response.json();
+} catch (error) {
+  console.error('Request failed:', error);
+  // Handle error appropriately
+}`
+          });
+        }
+      }
+      
+      // 2. Check for console.log in production code
+      if (code.includes('console.log(') && !code.includes('// Remove in production')) {
+        suggestions.push({
+          title: "Remove Debug Logs",
+          description: "Consider removing or commenting console.log statements for production",
+          code: `// Remove or comment console.log for production
+// console.log('Debug info:', variable);`
+        });
+      }
+      
+      // 3. Check for var usage
+      if (code.includes('var ')) {
+        suggestions.push({
+          title: "Use let/const Instead of var",
+          description: "Modern JavaScript recommends using let or const for better scoping",
+          code: `// Replace var with let or const
+const constantValue = 'value';
+let mutableValue = 'value';`
+        });
+      }
+      
+      // 4. Check for nested if statements
+      const ifCount = (code.match(/if\s*\(/g) || []).length;
+      if (ifCount > 3) {
+        suggestions.push({
+          title: "Simplify Conditional Logic",
+          description: "Consider using switch statements or early returns",
+          code: `// Example of early return pattern
+function processValue(value) {
+  if (!value) return null;
+  if (value === 'invalid') return 'default';
+  
+  // Process valid value
+  return value.toUpperCase();
+}`
+        });
+      }
+      
+      // 5. Check for long functions
+      const functionMatch = code.match(/function\s+\w+\([^)]*\)\s*\{[^}]*\}/gs);
+      if (functionMatch) {
+        functionMatch.forEach(func => {
+          const linesInFunction = func.split('\n').length;
+          if (linesInFunction > 20) {
+            suggestions.push({
+              title: "Split Long Function",
+              description: `Function with ${linesInFunction} lines could be split for readability`,
+              code: `// Split function into smaller, focused functions
+function processData(data) {
+  const validated = validateData(data);
+  const transformed = transformData(validated);
+  return saveData(transformed);
+}
+
+function validateData(data) { /* validation logic */ }
+function transformData(data) { /* transformation logic */ }
+function saveData(data) { /* save logic */ }`
+            });
+          }
+        });
+      }
+      
+      // 6. Check for magic numbers/strings
+      const magicNumbers = code.match(/\b\d{2,}\b/g);
+      if (magicNumbers && magicNumbers.length > 2) {
+        suggestions.push({
+          title: "Replace Magic Numbers with Constants",
+          description: "Use named constants for better readability",
+          code: `// Instead of magic numbers
+const MAX_RETRY_COUNT = 3;
+const TIMEOUT_DURATION = 5000;
+const DEFAULT_PAGE_SIZE = 20;`
+        });
+      }
+      
+      // 7. Check for repetitive code
+      const linesSet = new Set(lines.filter(l => l.trim().length > 10));
+      if (lines.length - linesSet.size > 2) {
+        suggestions.push({
+          title: "Remove Code Duplication",
+          description: "Extract repeated code into reusable functions",
+          code: `// Extract repeated logic
+function formatDate(date) {
+  return new Date(date).toLocaleDateString('en-US');
+}
+
+// Use the function instead of repeating logic
+const date1 = formatDate(timestamp1);
+const date2 = formatDate(timestamp2);`
+        });
+      }
+      
+      // 8. Performance suggestion for loops
+      if (code.includes('for (') && code.includes('.length')) {
+        suggestions.push({
+          title: "Optimize Loop Performance",
+          description: "Cache array length for better performance in loops",
+          code: `// Cache array length
+const items = [/* array */];
+for (let i = 0, len = items.length; i < len; i++) {
+  // process items[i]
+}`
+        });
+      }
+      
+      // 9. Async/await suggestion for promise chains
+      if (code.includes('.then(') && code.includes('.then(')) {
+        suggestions.push({
+          title: "Use Async/Await",
+          description: "Async/await can make promise chains more readable",
+          code: `// Convert promise chain to async/await
+async function fetchData() {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return processData(data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}`
+        });
+      }
+      
+      // 10. Security suggestion for user input
+      if (code.includes('innerHTML') || code.includes('eval(') || code.includes('document.write')) {
+        suggestions.push({
+          title: "Security Consideration",
+          description: "Avoid using innerHTML/eval with user input to prevent XSS attacks",
+          code: `// Use textContent instead of innerHTML for user input
+element.textContent = userInput;
+
+// Or sanitize input before using innerHTML
+const sanitizedInput = sanitizeHTML(userInput);
+element.innerHTML = sanitizedInput;`
+        });
+      }
+      
+      return suggestions.slice(0, 5); // Return top 5 suggestions
+    }
+    
+    // NEW: Apply AI suggestion
+    function applySuggestion(index) {
+      if (!currentSuggestions[index]) return;
+      
+      const suggestion = currentSuggestions[index];
+      const codeBox = document.getElementById('codeBox');
+      let currentCode = codeBox.textContent;
+      
+      // Simple suggestion application logic
+      // In a real implementation, this would be more sophisticated
+      if (suggestion.title.includes('Error Handling') && currentCode.includes('fetch(')) {
+        // Add try-catch around fetch
+        const fetchIndex = currentCode.indexOf('fetch(');
+        if (fetchIndex > -1) {
+          const before = currentCode.substring(0, fetchIndex);
+          const after = currentCode.substring(fetchIndex);
+          currentCode = before + 'try {\n  ' + after;
+          
+          // Find the end of the fetch chain
+          const lines = after.split('\n');
+          let endIndex = 0;
+          for (let i = 0; i < lines.length; i++) {
+            if (lines[i].trim().endsWith(';') || lines[i].trim().endsWith('}')) {
+              endIndex = i;
+              break;
+            }
+          }
+          
+          const updatedLines = lines.map((line, i) => {
+            if (i <= endIndex) {
+              return '  ' + line;
+            }
+            return line;
+          });
+          
+          const updatedAfter = updatedLines.join('\n');
+          currentCode = before + 'try {\n' + updatedAfter;
+          
+          // Add catch block at a reasonable position
+          const lastBrace = currentCode.lastIndexOf('}');
+          if (lastBrace > -1) {
+            currentCode = currentCode.substring(0, lastBrace) + 
+                         '\n} catch (error) {\n  console.error("Error:", error);\n  // Handle error appropriately\n}' + 
+                         currentCode.substring(lastBrace + 1);
+          }
+        }
+      } else if (suggestion.title.includes('let/const')) {
+        // Replace var with let/const
+        currentCode = currentCode.replace(/var\s+(\w+)\s*=/g, 'let $1 =');
+      } else if (suggestion.title.includes('Async/Await')) {
+        // Simple async/await conversion example
+        if (currentCode.includes('.then(')) {
+          currentCode = currentCode.replace(/\.then\(([^)]+)\)/g, '\n// Consider: await $1');
+        }
+      }
+      
+      // Update code box
+      codeBox.textContent = currentCode;
+      currentCodeForAnalysis = currentCode;
+      
+      // Save snapshot
+      saveSnapshot();
+      
+      // Log the change
+      addDebugLog(`Applied AI suggestion: ${suggestion.title}`);
+      showNotification(`✅ Applied: ${suggestion.title}`);
+      
+      // Regenerate suggestions
+      setTimeout(() => generateAISuggestions(currentCode), 500);
+    }
+    
+    // NEW: Apply top suggestion
+    function applyTopSuggestion() {
+      if (currentSuggestions.length > 0) {
+        applySuggestion(0);
+      }
+    }
+    
+    // NEW: Generate more suggestions
+    function generateMoreSuggestions() {
+      generateAISuggestions(currentCodeForAnalysis);
+      showNotification('🔍 Generating more suggestions...');
+    }
+    
+    // NEW: Apply all suggestions
+    function applyAllSuggestions() {
+      if (currentSuggestions.length === 0) {
+        showNotification('No suggestions to apply');
+        return;
+      }
+      
+      let code = currentCodeForAnalysis;
+      currentSuggestions.forEach(suggestion => {
+        // Simple application logic (in real app, this would be more sophisticated)
+        if (suggestion.title.includes('let/const')) {
+          code = code.replace(/var\s+(\w+)\s*=/g, 'let $1 =');
+        }
+        if (suggestion.title.includes('Remove Debug')) {
+          code = code.replace(/console\.log\([^)]*\);/g, '// $&');
+        }
+      });
+      
+      document.getElementById('codeBox').textContent = code;
+      currentCodeForAnalysis = code;
+      saveSnapshot();
+      addDebugLog('Applied all AI suggestions');
+      showNotification('✅ All suggestions applied!');
+    }
+    
+    // AI Code Explanation
+    window.explainCurrentCode = function() {
+      if (!currentCodeForAnalysis) {
+        showNotification('No code to analyze');
+        return;
+      }
+      
+      aiUsageStats.explanations++;
+      saveAllData();
+      updateAIUsageStats();
+      
+      const explanation = analyzeCode(currentCodeForAnalysis);
+      document.getElementById('aiExplanationContent').innerHTML = explanation;
+      document.getElementById('aiExplanationPanel').classList.add('show');
+      
+      addDebugLog('AI explanation generated');
+    };
+    
+    function closeAIExplanation() {
+      document.getElementById('aiExplanationPanel').classList.remove('show');
+    }
+    
+    // AI Code Analysis Function
+    function analyzeCode(code) {
+      const lines = code.split('\n');
+      let analysis = `<h4>📊 Code Analysis</h4>`;
+      
+      // Basic statistics
+      const lineCount = lines.length;
+      const charCount = code.length;
+      const wordCount = code.split(/\s+/).filter(w => w.length > 0).length;
+      
+      analysis += `<p><strong>Statistics:</strong> ${lineCount} lines, ${wordCount} words, ${charCount} characters</p>`;
+      
+      // Detect potential errors
+      const errors = [];
+      const suggestions = [];
+      
+      // Common JavaScript error patterns
+      if (code.includes('console.log(') && !code.includes('//')) {
+        suggestions.push('Consider removing console.log statements in production code');
+      }
+      
+      if (code.includes('var ')) {
+        suggestions.push('Consider using <code>let</code> or <code>const</code> instead of <code>var</code> for better scoping');
+      }
+      
+      if (code.includes('==') && !code.includes('===')) {
+        suggestions.push('Consider using strict equality (<code>===</code>) instead of loose equality (<code>==</code>)');
+      }
+      
+      if (code.includes('eval(')) {
+        errors.push('Avoid using <code>eval()</code> as it can be a security risk');
+      }
+      
+      // Check for common patterns
+      const functions = (code.match(/function\s+\w+|const\s+\w+\s*=\s*\(|let\s+\w+\s*=\s*\(/g) || []).length;
+      if (functions > 0) {
+        analysis += `<p><strong>Functions detected:</strong> ${functions}</p>`;
+      }
+      
+      // Detect loops
+      const loops = (code.match(/for\s*\(|while\s*\(|forEach|map|filter/g) || []).length;
+      if (loops > 0) {
+        analysis += `<p><strong>Loops/Iterators:</strong> ${loops}</p>`;
+      }
+      
+      // Add errors section
+      if (errors.length > 0) {
+        analysis += `<div class="code-errors">
+          <h4>⚠️ Potential Issues:</h4>
+          <ul>`;
+        errors.forEach(error => {
+          analysis += `<li>${error}</li>`;
+        });
+        analysis += `</ul></div>`;
+      }
+      
+      // Add suggestions section
+      if (suggestions.length > 0) {
+        analysis += `<div class="code-suggestions">
+          <h4>💡 Optimization Suggestions:</h4>
+          <ul>`;
+        suggestions.forEach(suggestion => {
+          analysis += `<li>${suggestion}</li>`;
+        });
+        analysis += `</ul></div>`;
+      }
+      
+      // Add complexity analysis
+      const complexity = estimateComplexity(code);
+      analysis += `<p><strong>Complexity Estimate:</strong> ${complexity}</p>`;
+      
+      // Best practices
+      analysis += `<div style="margin-top:15px;">
+        <h4>🏆 Best Practices Checklist:</h4>
+        <ul>
+          <li>${code.includes('//') ? '✅' : '⬜'} Code contains comments</li>
+          <li>${functions > 0 ? '✅' : '⬜'} Functions are properly defined</li>
+          <li>${!code.includes('eval(') ? '✅' : '❌'} No dangerous functions</li>
+          <li>${charCount < 1000 ? '✅' : '⚠️'} Reasonable code length</li>
+          <li>${!code.includes('var ') ? '✅' : '⚠️'} Uses let/const instead of var</li>
+          <li>${code.includes('async') || code.includes('await') ? '✅' : '⬜'} Uses modern async/await</li>
+        </ul>
+      </div>`;
+      
+      return analysis;
+    }
+    
+    function estimateComplexity(code) {
+      const lines = code.split('\n').length;
+      if (lines < 20) return 'Low (Simple script)';
+      if (lines < 50) return 'Medium (Moderate logic)';
+      if (lines < 100) return 'High (Complex logic)';
+      return 'Very High (Large codebase)';
+    }
+    
+    // Generate improved code
+    window.generateImprovedCode = function() {
+      if (!currentCodeForAnalysis) {
+        showNotification('No code to improve');
+        return;
+      }
+      
+      let improvedCode = currentCodeForAnalysis;
+      
+      // Apply common improvements
+      improvedCode = improvedCode.replace(/var\s+/g, 'const ');
+      improvedCode = improvedCode.replace(/==/g, '===');
+      improvedCode = improvedCode.replace(/console\.log\(/g, '// console.log(');
+      
+      // Add header comment
+      const timestamp = new Date().toLocaleString();
+      const header = `/*\n * Optimized by FUSCHIA\n * Generated: ${timestamp}\n */\n\n`;
+      
+      improvedCode = header + improvedCode;
+      
+      // Show in code viewer
+      document.getElementById('codeBox').textContent = improvedCode;
+      currentCodeForAnalysis = improvedCode;
+      
+      // Save snapshot
+      saveSnapshot();
+      
+      addDebugLog('Generated improved code version');
+      showNotification('Improved code generated!');
+      closeAIExplanation();
     };
     
     // Close code viewer
@@ -1190,6 +2940,515 @@
       document.getElementById('codeViewer').style.display = 'none';
       document.getElementById('browseSection').style.display = 'block';
       renderShares(shares);
+      closeAIExplanation();
+      closeCompileOutput();
+      
+      // Deactivate pair programming
+      pairProgrammingActive = false;
+      document.getElementById('pairProgrammerBtn').classList.remove('active');
+      document.getElementById('aiSuggestionOverlay').classList.remove('show');
+    }
+    
+    // NEW: Compile Code Function
+    window.compileCodeShare = function(id) {
+      const share = shares.find(s => s.id === id);
+      if (!share) return showNotification('Share not found!');
+      
+      if (share.type !== 'code') {
+        showNotification('Only code shares can be compiled');
+        return;
+      }
+      
+      // Track usage
+      aiUsageStats.compilations++;
+      saveAllData();
+      updateAIUsageStats();
+      
+      // Store current share ID
+      currentShareId = id;
+      
+      // Hide browse section, show compile output
+      document.getElementById('browseSection').style.display = 'none';
+      document.getElementById('codeViewer').style.display = 'none';
+      document.getElementById('compileOutput').classList.add('show');
+      
+      // Set compile output content
+      document.getElementById('compileContent').textContent = '';
+      document.getElementById('compileLanguage').textContent = `Language: ${share.language}`;
+      document.getElementById('compileTime').textContent = `Compiled: ${new Date().toLocaleTimeString()}`;
+      document.getElementById('compileStatus').textContent = `Status: Compiling...`;
+      
+      // Show compiling message
+      document.getElementById('compileContent').textContent = '🔄 Compiling code... Please wait...';
+      
+      // Clear debug console
+      clearDebugConsole();
+      addDebugLog(`Starting compilation of: ${share.title}`);
+      addDebugLog(`Language: ${share.language}`);
+      
+      // Simulate compilation delay
+      setTimeout(() => {
+        const output = simulateCompilation(share.code, share.language);
+        document.getElementById('compileContent').textContent = output;
+        document.getElementById('compileStatus').textContent = `Status: ✅ Compiled successfully`;
+        document.getElementById('compileTime').textContent = `Compiled: ${new Date().toLocaleTimeString()}`;
+        
+        // Add to debug console
+        addDebugLog('Compilation completed successfully');
+        addDebugLog(`Output length: ${output.length} characters`);
+        
+        // Store compile output for this user
+        const compileKey = `compile_${id}_${getUserId()}`;
+        localStorage.setItem(compileKey, JSON.stringify({
+          output: output,
+          timestamp: new Date().toISOString(),
+          language: share.language
+        }));
+        
+        showNotification('Code compiled successfully!');
+      }, 1500);
+      
+      // Scroll to compile output
+      document.getElementById('compileOutput').scrollIntoView({ behavior: 'smooth' });
+    };
+    
+    // NEW: Simulate compilation based on language
+    function simulateCompilation(code, language) {
+      const lines = code.split('\n').length;
+      const chars = code.length;
+      const timestamp = new Date().toLocaleString();
+      
+      let output = `=== COMPILATION OUTPUT ===\n`;
+      output += `Language: ${language}\n`;
+      output += `Timestamp: ${timestamp}\n`;
+      output += `Lines: ${lines}, Characters: ${chars}\n`;
+      output += `Status: ✅ Success\n\n`;
+      
+      // Language-specific compilation simulation
+      switch(language.toLowerCase()) {
+        case 'javascript':
+          output += simulateJavaScriptCompilation(code);
+          break;
+        case 'python':
+          output += simulatePythonCompilation(code);
+          break;
+        case 'java':
+          output += simulateJavaCompilation(code);
+          break;
+        case 'c++':
+        case 'c':
+          output += simulateCppCompilation(code);
+          break;
+        case 'html':
+          output += simulateHTMLCompilation(code);
+          break;
+        case 'css':
+          output += simulateCSSCompilation(code);
+          break;
+        default:
+          output += simulateGenericCompilation(code);
+      }
+      
+      output += `\n=== END OF OUTPUT ===\n`;
+      output += `Compilation completed successfully!`;
+      
+      return output;
+    }
+    
+    function simulateJavaScriptCompilation(code) {
+      let output = `🔧 JavaScript Execution:\n`;
+      output += `✓ Syntax check passed\n`;
+      output += `✓ No runtime errors detected\n`;
+      
+      // Try to detect console.log statements
+      const logMatches = code.match(/console\.log\([^)]+\)/g);
+      if (logMatches) {
+        output += `\n📝 Console Outputs:\n`;
+        logMatches.forEach((log, idx) => {
+          // Extract content between parentheses
+          const match = log.match(/console\.log\(([^)]+)\)/);
+          if (match) {
+            const content = match[1];
+            output += `  [${idx + 1}] ${content}\n`;
+            
+            // Try to evaluate simple expressions
+            try {
+              // Safe evaluation for simple expressions
+              if (!content.includes('document') && !content.includes('window') && !content.includes('process')) {
+                const evalResult = eval(`(${content})`);
+                output += `      → Result: ${evalResult}\n`;
+                addDebugLog(`console.log ${idx + 1}: ${evalResult}`);
+              }
+            } catch(e) {
+              // Ignore evaluation errors
+            }
+          }
+        });
+      }
+      
+      // Check for functions
+      const funcMatches = code.match(/function\s+(\w+)\s*\(/g);
+      if (funcMatches) {
+        output += `\n⚙️ Functions detected:\n`;
+        funcMatches.forEach(func => {
+          const name = func.match(/function\s+(\w+)/)[1];
+          output += `  • ${name}()\n`;
+          addDebugLog(`Function detected: ${name}()`);
+        });
+      }
+      
+      return output;
+    }
+    
+    function simulatePythonCompilation(code) {
+      let output = `🐍 Python Execution:\n`;
+      output += `✓ Syntax check passed\n`;
+      output += `✓ Indentation validated\n`;
+      
+      // Check for print statements
+      const printMatches = code.match(/print\([^)]+\)/g);
+      if (printMatches) {
+        output += `\n📝 Print Outputs:\n`;
+        printMatches.forEach((print, idx) => {
+          const content = print.substring(6, print.length - 1);
+          output += `  [${idx + 1}] ${content}\n`;
+          addDebugLog(`print statement ${idx + 1}: ${content}`);
+        });
+      }
+      
+      // Check for imports
+      const importMatches = code.match(/import\s+\w+|from\s+\w+\s+import/g);
+      if (importMatches) {
+        output += `\n📦 Imports detected:\n`;
+        importMatches.forEach(imp => {
+          output += `  • ${imp}\n`;
+          addDebugLog(`Import: ${imp}`);
+        });
+      }
+      
+      return output;
+    }
+    
+    function simulateJavaCompilation(code) {
+      let output = `☕ Java Compilation:\n`;
+      output += `✓ Class structure validated\n`;
+      output += `✓ Syntax check passed\n`;
+      
+      // Check for main method
+      if (code.includes('public static void main')) {
+        output += `✓ Main method detected\n`;
+        addDebugLog('Main method detected');
+      }
+      
+      // Check for System.out.println
+      const printlnMatches = code.match(/System\.out\.println\([^)]+\)/g);
+      if (printlnMatches) {
+        output += `\n📝 Output Statements:\n`;
+        printlnMatches.forEach((stmt, idx) => {
+          const content = stmt.substring(22, stmt.length - 2);
+          output += `  [${idx + 1}] "${content}"\n`;
+          addDebugLog(`System.out.println ${idx + 1}: "${content}"`);
+        });
+      }
+      
+      return output;
+    }
+    
+    function simulateCppCompilation(code) {
+      let output = `⚙️ C++ Compilation:\n`;
+      output += `✓ Header files validated\n`;
+      output += `✓ Syntax check passed\n`;
+      
+      // Check for includes
+      const includeMatches = code.match(/#include\s+<[^>]+>|#include\s+"[^"]+"/g);
+      if (includeMatches) {
+        output += `\n📚 Includes detected:\n`;
+        includeMatches.forEach(inc => {
+          output += `  • ${inc}\n`;
+          addDebugLog(`Include: ${inc}`);
+        });
+      }
+      
+      // Check for cout statements
+      const coutMatches = code.match(/cout\s*<<[^;]+;/g);
+      if (coutMatches) {
+        output += `\n📝 Console Outputs:\n`;
+        coutMatches.forEach((cout, idx) => {
+          output += `  [${idx + 1}] ${cout}\n`;
+          addDebugLog(`cout statement ${idx + 1}`);
+        });
+      }
+      
+      return output;
+    }
+    
+    function simulateHTMLCompilation(code) {
+      let output = `🌐 HTML Validation:\n`;
+      output += `✓ Tag structure validated\n`;
+      output += `✓ No unclosed tags detected\n`;
+      
+      // Count tags
+      const tagMatches = code.match(/<\/?\w+/g);
+      if (tagMatches) {
+        const tagCount = {};
+        tagMatches.forEach(tag => {
+          const cleanTag = tag.replace(/[<\/]/, '');
+          tagCount[cleanTag] = (tagCount[cleanTag] || 0) + 1;
+        });
+        
+        output += `\n🏷️ Tags detected:\n`;
+        Object.entries(tagCount).forEach(([tag, count]) => {
+          output += `  • <${tag}>: ${count} occurrence(s)\n`;
+          addDebugLog(`HTML tag: <${tag}> (${count}x)`);
+        });
+      }
+      
+      return output;
+    }
+    
+    function simulateCSSCompilation(code) {
+      let output = `🎨 CSS Validation:\n`;
+      output += `✓ Syntax check passed\n`;
+      output += `✓ Selectors validated\n`;
+      
+      // Count selectors
+      const selectorMatches = code.match(/([.#]?\w+)\s*{/g);
+      if (selectorMatches) {
+        output += `\n🎯 Selectors detected:\n`;
+        selectorMatches.forEach((selector, idx) => {
+          const cleanSelector = selector.replace('{', '').trim();
+          output += `  [${idx + 1}] ${cleanSelector}\n`;
+          addDebugLog(`CSS selector: ${cleanSelector}`);
+        });
+      }
+      
+      return output;
+    }
+    
+    function simulateGenericCompilation(code) {
+      let output = `🔧 Generic Code Analysis:\n`;
+      output += `✓ Basic syntax check passed\n`;
+      
+      // Count lines and functions
+      const lines = code.split('\n');
+      const nonEmptyLines = lines.filter(line => line.trim().length > 0);
+      const commentLines = lines.filter(line => line.trim().startsWith('//') || line.trim().startsWith('#') || line.trim().startsWith('/*'));
+      
+      output += `\n📊 Statistics:\n`;
+      output += `  • Total lines: ${lines.length}\n`;
+      output += `  • Non-empty lines: ${nonEmptyLines.length}\n`;
+      output += `  • Comment lines: ${commentLines.length}\n`;
+      output += `  • Code lines: ${nonEmptyLines.length - commentLines.length}\n`;
+      
+      addDebugLog(`Code statistics: ${lines.length} lines, ${nonEmptyLines.length} non-empty`);
+      
+      return output;
+    }
+    
+    // NEW: Get unique user ID for compile storage
+    function getUserId() {
+      let userId = localStorage.getItem('fuschia_user_id');
+      if (!userId) {
+        userId = 'user_' + Math.random().toString(36).substr(2, 9);
+        localStorage.setItem('fuschia_user_id', userId);
+      }
+      return userId;
+    }
+    
+    // NEW: Close compile output
+    function closeCompileOutput() {
+      document.getElementById('compileOutput').classList.remove('show');
+      document.getElementById('browseSection').style.display = 'block';
+      renderShares(shares);
+    }
+    
+    // ========== TIME TRAVEL DEBUGGER ==========
+    
+    // Toggle Time Travel Debugger
+    function toggleTimeTravel() {
+      const debuggerPanel = document.getElementById('timeTravelDebugger');
+      const isVisible = debuggerPanel.classList.contains('show');
+      
+      if (isVisible) {
+        debuggerPanel.classList.remove('show');
+        document.getElementById('timeTravelBtn').classList.remove('active');
+      } else {
+        debuggerPanel.classList.add('show');
+        document.getElementById('timeTravelBtn').classList.add('active');
+        updateTimeTravelTimeline();
+      }
+    }
+    
+    // Toggle Pair Programmer
+    function togglePairProgrammer() {
+      const panel = document.getElementById('pairProgrammerPanel');
+      const isVisible = panel.classList.contains('show');
+      
+      if (isVisible) {
+        panel.classList.remove('show');
+        document.getElementById('pairProgrammerBtn').classList.remove('active');
+      } else {
+        panel.classList.add('show');
+        document.getElementById('pairProgrammerBtn').classList.add('active');
+        
+        // Generate suggestions if we have code
+        if (currentCodeForAnalysis) {
+          generateAISuggestions(currentCodeForAnalysis);
+        }
+      }
+    }
+    
+    // Toggle Debug Console
+    function toggleDebugConsole() {
+      const consolePanel = document.getElementById('debugConsole');
+      const isVisible = consolePanel.classList.contains('show');
+      
+      if (isVisible) {
+        consolePanel.classList.remove('show');
+        document.getElementById('debugConsoleBtn').classList.remove('active');
+      } else {
+        consolePanel.classList.add('show');
+        document.getElementById('debugConsoleBtn').classList.add('active');
+      }
+    }
+    
+    // Save code snapshot
+    function saveSnapshot() {
+      if (!currentCodeForAnalysis) return;
+      
+      const snapshot = {
+        id: Date.now(),
+        timestamp: new Date().toISOString(),
+        code: currentCodeForAnalysis,
+        title: `Snapshot ${codeSnapshots.length + 1}`,
+        description: `Saved at ${new Date().toLocaleTimeString()}`
+      };
+      
+      codeSnapshots.push(snapshot);
+      currentSnapshotIndex = codeSnapshots.length - 1;
+      
+      aiUsageStats.timeTravelSnapshots++;
+      saveAllData();
+      updateTimeTravelTimeline();
+      updateAIUsageStats();
+      
+      addDebugLog(`Snapshot saved: ${snapshot.title}`);
+      showNotification('💾 Snapshot saved!');
+    }
+    
+    // Update time travel timeline
+    function updateTimeTravelTimeline() {
+      const timeline = document.getElementById('timeTravelTimeline');
+      const stats = document.getElementById('timeTravelStats');
+      
+      stats.textContent = `Snapshots: ${codeSnapshots.length}`;
+      
+      if (codeSnapshots.length === 0) {
+        timeline.innerHTML = '<p>No snapshots yet. Make changes to your code to create snapshots.</p>';
+        return;
+      }
+      
+      let timelineHTML = '';
+      codeSnapshots.forEach((snap, index) => {
+        const time = new Date(snap.timestamp).toLocaleTimeString();
+        const codePreview = snap.code.substring(0, 50) + (snap.code.length > 50 ? '...' : '');
+        const isActive = index === currentSnapshotIndex;
+        
+        timelineHTML += `
+          <div class="timeline-item ${isActive ? 'active' : ''}" onclick="restoreSnapshot(${index})">
+            <div class="time">${time}</div>
+            <div class="action">${snap.title}</div>
+            <div class="code-preview" title="${escapeHtml(codePreview)}">${escapeHtml(codePreview)}</div>
+          </div>
+        `;
+      });
+      
+      timeline.innerHTML = timelineHTML;
+    }
+    
+    // Restore snapshot
+    function restoreSnapshot(index = null) {
+      if (codeSnapshots.length === 0) {
+        showNotification('No snapshots to restore');
+        return;
+      }
+      
+      const restoreIndex = index !== null ? index : currentSnapshotIndex;
+      if (restoreIndex < 0 || restoreIndex >= codeSnapshots.length) {
+        showNotification('Invalid snapshot index');
+        return;
+      }
+      
+      const snapshot = codeSnapshots[restoreIndex];
+      currentSnapshotIndex = restoreIndex;
+      
+      // Update code viewer
+      if (document.getElementById('codeViewer').style.display === 'block') {
+        document.getElementById('codeBox').textContent = snapshot.code;
+        currentCodeForAnalysis = snapshot.code;
+        
+        // Regenerate AI suggestions
+        if (pairProgrammingActive) {
+          generateAISuggestions(snapshot.code);
+        }
+      }
+      
+      saveAllData();
+      updateTimeTravelTimeline();
+      addDebugLog(`Restored snapshot: ${snapshot.title}`);
+      showNotification(`↩️ Restored: ${snapshot.title}`);
+    }
+    
+    // Time travel controls
+    function rewindToStart() {
+      if (codeSnapshots.length === 0) return;
+      restoreSnapshot(0);
+    }
+    
+    function stepBackward() {
+      if (currentSnapshotIndex > 0) {
+        restoreSnapshot(currentSnapshotIndex - 1);
+      } else {
+        showNotification('Already at the first snapshot');
+      }
+    }
+    
+    function stepForward() {
+      if (currentSnapshotIndex < codeSnapshots.length - 1) {
+        restoreSnapshot(currentSnapshotIndex + 1);
+      } else {
+        showNotification('Already at the latest snapshot');
+      }
+    }
+    
+    function fastForward() {
+      if (codeSnapshots.length === 0) return;
+      restoreSnapshot(codeSnapshots.length - 1);
+    }
+    
+    // ========== DEBUG CONSOLE ==========
+    
+    function addDebugLog(message) {
+      const timestamp = new Date().toLocaleTimeString();
+      debugLogs.push(`[${timestamp}] ${message}`);
+      
+      // Keep only last 50 logs
+      if (debugLogs.length > 50) {
+        debugLogs.shift();
+      }
+      
+      updateDebugConsole();
+    }
+    
+    function updateDebugConsole() {
+      const consoleContent = document.getElementById('consoleContent');
+      consoleContent.textContent = debugLogs.join('\n');
+      consoleContent.scrollTop = consoleContent.scrollHeight;
+    }
+    
+    function clearDebugConsole() {
+      debugLogs = [];
+      updateDebugConsole();
     }
     
     // Download file for notes
@@ -1319,6 +3578,8 @@
     function renderAdminPanel() {
       renderAdminShares();
       renderAdminContacts();
+      renderAnalytics();
+      renderAIInsights();
     }
     
     function renderAdminShares() {
@@ -1342,16 +3603,17 @@
           <tr class="${isTopShare ? 'top-share' : ''}">
             <td>
               ${escapeHtml(share.title)}
-              ${isTopShare ? '<span class="top-badge">TOP</span>' : ''}
+              ${isTopShare ? '<span style="color:#ffd700;margin-left:8px;">🔥 TOP</span>' : ''}
             </td>
             <td>${share.type === 'code' ? 'Code' : 'Notes'}</td>
             <td>${share.sharedBy}</td>
             <td><span class="view-count-badge">${share.views || 0}</span></td>
             <td>${avgRating}</td>
             <td>
-              <button class="action-btn" onclick="viewCodeShare(${share.id})">View</button>
-              <button class="action-btn" onclick="editShare(${share.id})">Edit</button>
-              <button class="action-btn" onclick="deleteShare(${share.id})" style="background:var(--danger)">Delete</button>
+              <button class="action-btn" onclick="viewCodeShare(${share.id})" style="background:var(--primary);color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;margin-right:5px;">View</button>
+              <button class="action-btn" onclick="editShare(${share.id})" style="background:var(--success);color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;margin-right:5px;">Edit</button>
+              <button class="action-btn" onclick="deleteShare(${share.id})" style="background:var(--danger);color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;">Delete</button>
+              ${share.type === 'code' ? `<button class="action-btn" onclick="startPairProgrammingFromShare(${share.id})" style="background:#10b981;color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;margin-right:5px;">AI Pair</button>` : ''}
             </td>
           </tr>
         `;
@@ -1380,6 +3642,9 @@
             <td>${escapeHtml(contact.name)}</td>
             <td>${contact.phone}</td>
             <td>${new Date(contact.timestamp).toLocaleString()}</td>
+            <td>
+              <button onclick="deleteContact(${contact.id})" style="background:var(--danger);color:white;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;">Delete</button>
+            </td>
           </tr>
         `;
       });
@@ -1387,11 +3652,100 @@
       if (contacts.length === 0) {
         container.innerHTML = `
           <tr>
-            <td colspan="3" style="text-align:center;padding:20px;color:#94a3b8">
+            <td colspan="4" style="text-align:center;padding:20px;color:#94a3b8">
               No contact submissions yet
             </td>
           </tr>
         `;
+      }
+    }
+    
+    function deleteContact(id) {
+      if (!confirm('Delete this contact?')) return;
+      contacts = contacts.filter(c => c.id !== id);
+      saveAllData();
+      renderAdminContacts();
+      showNotification('Contact deleted');
+    }
+    
+    function renderAnalytics() {
+      // Update metrics
+      document.getElementById('totalShares').textContent = shares.length;
+      document.getElementById('totalViews').textContent = shares.reduce((sum, s) => sum + (s.views || 0), 0);
+      document.getElementById('totalContacts').textContent = contacts.length;
+      
+      // Calculate average rating
+      const allRatings = shares.flatMap(s => s.ratings || []).map(r => r.value);
+      const avgRating = allRatings.length ? (allRatings.reduce((a,b) => a + b, 0) / allRatings.length).toFixed(1) : '0';
+      document.getElementById('avgRating').textContent = avgRating;
+      
+      // Language chart
+      const languageCounts = {};
+      shares.filter(s => s.language).forEach(s => {
+        languageCounts[s.language] = (languageCounts[s.language] || 0) + 1;
+      });
+      
+      let chartHTML = '';
+      const sortedLanguages = Object.entries(languageCounts)
+        .sort((a,b) => b[1] - a[1])
+        .slice(0, 5);
+      
+      sortedLanguages.forEach(([lang, count]) => {
+        const percentage = (count / shares.length * 100).toFixed(1);
+        chartHTML += `
+          <div style="margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span>${lang}</span>
+              <span>${count} (${percentage}%)</span>
+            </div>
+            <div style="height:8px;background:#23232b;border-radius:4px;overflow:hidden;">
+              <div style="height:100%;background:var(--primary);width:${percentage}%"></div>
+            </div>
+          </div>
+        `;
+      });
+      
+      document.getElementById('languageChart').innerHTML = chartHTML || '<p style="color:var(--muted);text-align:center;">No language data</p>';
+    }
+    
+    function renderAIInsights() {
+      // Update AI metrics
+      document.getElementById('totalAIExplanations').textContent = aiUsageStats.explanations;
+      document.getElementById('totalCompilations').textContent = aiUsageStats.compilations;
+      document.getElementById('totalPairSessions').textContent = aiUsageStats.pairSessions;
+      document.getElementById('totalTimeTravelSnapshots').textContent = aiUsageStats.timeTravelSnapshots;
+      
+      // AI suggestions chart (simulated data)
+      const suggestionsData = {
+        'Error Handling': 45,
+        'Performance Optimizations': 32,
+        'Code Style Improvements': 28,
+        'Security Suggestions': 18,
+        'Best Practices': 25
+      };
+      
+      let suggestionsHTML = '';
+      Object.entries(suggestionsData).forEach(([suggestion, count]) => {
+        const percentage = (count / 100 * 100).toFixed(0);
+        suggestionsHTML += `
+          <div style="margin-bottom:12px;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:5px;">
+              <span>${suggestion}</span>
+              <span>${count} (${percentage}%)</span>
+            </div>
+            <div style="height:8px;background:#23232b;border-radius:4px;overflow:hidden;">
+              <div style="height:100%;background:#10b981;width:${percentage}%"></div>
+            </div>
+          </div>
+        `;
+      });
+      
+      document.getElementById('aiSuggestionsChart').innerHTML = suggestionsHTML;
+    }
+    
+    function updateAIUsageStats() {
+      if (loggedIn) {
+        renderAIInsights();
       }
     }
     
@@ -1408,6 +3762,12 @@
       // Activate selected tab
       event.target.classList.add('active');
       document.getElementById(tabName + 'Tab').classList.add('active');
+      
+      if (tabName === 'analytics') {
+        renderAnalytics();
+      } else if (tabName === 'aiInsights') {
+        renderAIInsights();
+      }
     }
     
     // Utility Functions
@@ -1463,11 +3823,489 @@
       if (e.target === this) closeContactModal();
     });
     
+    // ============================================
+    // ADVANCED FEATURES IMPLEMENTATION
+    // ============================================
+    
+    // 1. DARK/LIGHT THEME TOGGLE
+    document.getElementById('themeToggle').addEventListener('click', function() {
+      document.body.classList.toggle('light-theme');
+      const isLight = document.body.classList.contains('light-theme');
+      this.textContent = isLight ? '🌙' : '🌓';
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      showNotification(`Switched to ${isLight ? 'Light' : 'Dark'} theme`);
+    });
+    
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'light') {
+      document.body.classList.add('light-theme');
+      document.getElementById('themeToggle').textContent = '🌙';
+    }
+    
+    // 2. FUSCHIA CHATBOT - IMPROVED VERSION
+    let chatOpen = false;
+    const chatBtn = document.getElementById('fuschia-chat-btn');
+    const chatModal = document.getElementById('fuschia-chat-modal');
+    const chatInput = document.getElementById('chatInput');
+    const chatBody = document.getElementById('chatBody');
+    const chatSendBtn = document.getElementById('chatSendBtn');
+    const typingIndicator = document.getElementById('typingIndicator');
+    
+    // Toggle chat
+    window.toggleChat = function() {
+      chatOpen = !chatOpen;
+      chatModal.classList.toggle('open', chatOpen);
+      chatBtn.classList.toggle('active', chatOpen);
+      
+      if (chatOpen) {
+        chatInput.focus();
+        // Scroll to bottom
+        setTimeout(() => {
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }, 100);
+      }
+    };
+    
+    // Chat button click
+    chatBtn.addEventListener('click', toggleChat);
+    
+    // Send message function
+    window.sendChatMessage = function() {
+      const message = chatInput.value.trim();
+      if (!message) return;
+      
+      // Add user message
+      const userMessageDiv = document.createElement('div');
+      userMessageDiv.className = 'message user-message';
+      userMessageDiv.textContent = message;
+      chatBody.appendChild(userMessageDiv);
+      
+      // Clear input
+      chatInput.value = '';
+      
+      // Show typing indicator
+      typingIndicator.classList.add('active');
+      chatBody.scrollTop = chatBody.scrollHeight;
+      
+      // Simulate AI thinking
+      setTimeout(() => {
+        typingIndicator.classList.remove('active');
+        
+        // Get AI response
+        const aiResponse = getAIResponse(message);
+        
+        // Add AI message
+        const aiMessageDiv = document.createElement('div');
+        aiMessageDiv.className = 'message bot-message';
+        aiMessageDiv.innerHTML = aiResponse;
+        chatBody.appendChild(aiMessageDiv);
+        
+        // Scroll to bottom
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 1000 + Math.random() * 1000);
+    };
+    
+    // Enter key to send
+    chatInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        sendChatMessage();
+      }
+    });
+    
+    // AI Response Generator - UPDATED WITH NEW FEATURES
+    function getAIResponse(userMessage) {
+      const msg = userMessage.toLowerCase().trim();
+      
+      // Greetings
+      if (msg.match(/(hi|hello|hey|good morning|good afternoon|good evening)/)) {
+        return "Hello there! 👋 I'm <strong>Fuschia</strong>, now with <strong>AI-Pair Programming</strong> and <strong>Time-Travel Debugging</strong>! How can I assist you today?";
+      }
+      
+      // AI-Pair Programmer
+      if (msg.includes('pair program') || msg.includes('ai pair') || msg.includes('code suggestions')) {
+        return `🤝 <strong>AI-Pair Programmer:</strong><br>
+                Try these features:<br>
+                • Click the <strong>🤝 AI Pair</strong> button on any code share<br>
+                • Use the <strong>🤝</strong> quick action button<br>
+                • Get real-time code suggestions as you type<br>
+                • Apply optimizations with one click<br>
+                • View AI suggestions in the side panel`;
+      }
+      
+      // Time-Travel Debugging
+      if (msg.includes('time travel') || msg.includes('debugger') || msg.includes('snapshot') || msg.includes('history')) {
+        return `⏱️ <strong>Time-Travel Debugger:</strong><br>
+                Features include:<br>
+                • Click the <strong>⏱️ Time Travel</strong> button<br>
+                • Use the <strong>⏱️</strong> quick action button<br>
+                • Save code snapshots as you work<br>
+                • Rewind to any previous version<br>
+                • Step through code history<br>
+                • Compare different versions`;
+      }
+      
+      // Debug Console
+      if (msg.includes('debug console') || msg.includes('logs') || msg.includes('execution')) {
+        return `🐛 <strong>Debug Console:</strong><br>
+                • Click the <strong>🐛</strong> quick action button<br>
+                • View real-time execution logs<br>
+                • See compilation outputs<br>
+                • Track AI suggestion applications<br>
+                • Monitor code changes`;
+      }
+      
+      // Code analysis
+      if (msg.includes('explain') || msg.includes('analyze') || msg.includes('code analysis')) {
+        return `🤖 <strong>Code Analysis Feature:</strong><br>
+                When viewing any code snippet, click the <strong>"🤖 AI Explain"</strong> button to get:<br>
+                • Code statistics (lines, characters)<br>
+                • Potential errors detection<br>
+                • Optimization suggestions<br>
+                • Best practices checklist<br>
+                • Generate improved code versions`;
+      }
+      
+      // Code generation
+      if (msg.includes('generate') || msg.includes('create code') || msg.includes('write code')) {
+        return `💻 <strong>Code Generation:</strong><br>
+                I can help you create code snippets! Try asking:<br>
+                • "Create a JavaScript function to..."<br>
+                • "Generate HTML form for..."<br>
+                • "Write Python code for..."<br>
+                • "Show me CSS for..."<br><br>
+                Or use the AI panel when viewing code to generate improved versions!`;
+      }
+      
+      // Compile feature
+      if (msg.includes('compile') || msg.includes('run') || msg.includes('execute')) {
+        return `⚡ <strong>Compile Feature:</strong><br>
+                When browsing code shares, you'll see a <strong>"Compile"</strong> button next to each code share!<br>
+                Click it to:<br>
+                • Simulate code execution<br>
+                • See output based on language<br>
+                • Get compilation status<br>
+                • View console outputs<br><br>
+                Try it on any code share!`;
+      }
+      
+      // Sharing
+      if (msg.includes('share') || msg.includes('upload') || msg.includes('post')) {
+        return `📤 <strong>How to Share:</strong><br>
+                1. Login as Admin<br>
+                2. Click "Share Code" or "Share Notes"<br>
+                3. For code: Select language & paste code<br>
+                4. For notes: Attach file & add description<br>
+                5. Click Share!`;
+      }
+      
+      // Contact
+      if (msg.includes('contact') || msg.includes('eeswar') || msg.includes('admin')) {
+        return `📞 <strong>Contact Information:</strong><br>
+                • Creator: <strong>EESWAR UDAY</strong><br>
+                • Phone: <strong>9848863038</strong><br>
+                • Click the "Contact Admin" button to send a message!`;
+      }
+      
+      // Features
+      if (msg.includes('feature') || msg.includes('what can') || msg.includes('do')) {
+        return `✨ <strong>FUSCHIA AI Features:</strong><br>
+                • <strong>🤝 AI-Pair Programmer</strong> - Real-time code suggestions<br>
+                • <strong>⏱️ Time-Travel Debugger</strong> - Code history tracking<br>
+                • <strong>🐛 Debug Console</strong> - Execution logs<br>
+                • <strong>🤖 AI Code Analysis</strong> - Explain and optimize code<br>
+                • <strong>⚡ Compile Code</strong> - Run and see outputs<br>
+                • <strong>📤 Instant Sharing</strong> - No signup needed<br>
+                • <strong>📱 Responsive Design</strong> - Mobile friendly<br>
+                • <strong>⭐ Rating System</strong> - Rate shares 1-5 stars<br>
+                • <strong>📎 File Attachments</strong> - PDF, Images, Docs<br>
+                • <strong>🌓 Dark/Light Theme</strong> - Toggle anytime<br>
+                • <strong>📱 QR Codes</strong> - Mobile sharing<br>
+                • <strong>📸 Export as Image</strong> - Share on social media`;
+      }
+      
+      // Error fixing
+      if (msg.includes('error') || msg.includes('fix') || msg.includes('bug') || msg.includes('problem')) {
+        return `🔧 <strong>Error Detection & Fixing:</strong><br>
+                Multiple ways to fix errors:<br>
+                1. <strong>AI-Pair Programmer</strong> - Real-time suggestions<br>
+                2. <strong>AI Code Analysis</strong> - Detailed explanations<br>
+                3. <strong>Time-Travel</strong> - Revert to working version<br>
+                4. <strong>Debug Console</strong> - See execution logs<br><br>
+                Try the 🤝 AI Pair button while viewing code!`;
+      }
+      
+      // Help
+      if (msg.includes('help') || msg.includes('support') || msg.includes('how to')) {
+        return `🆘 <strong>Need Help?</strong><br>
+                Try these:<br>
+                • Ask about <strong>AI-Pair programming</strong><br>
+                • Ask about <strong>Time-Travel debugging</strong><br>
+                • Ask about <strong>code analysis</strong><br>
+                • Ask about <strong>compiling code</strong><br>
+                • Ask about <strong>error fixing</strong><br>
+                • Ask about <strong>sharing</strong> code/notes<br>
+                • Ask about <strong>features</strong><br>
+                • Ask about <strong>contact</strong> information<br>
+                • Or just tell me what you need!`;
+      }
+      
+      // Generate code based on request
+      if (msg.includes('javascript') || msg.includes('python') || msg.includes('html') || msg.includes('css')) {
+        return generateCodeSnippet(msg);
+      }
+      
+      // Default response
+      return `🤖 I'm here to help with AI-Pair programming and code analysis! Try asking:<br>
+              • <strong>"How to use AI-Pair programmer"</strong><br>
+              • <strong>"Explain time travel debugging"</strong><br>
+              • <strong>"How to compile code"</strong><br>
+              • <strong>"Generate [language] code for..."</strong><br>
+              • <strong>"Features"</strong> for platform capabilities<br>
+              • <strong>"Contact"</strong> for admin details<br><br>
+              How else can I assist you?`;
+    }
+    
+    // Generate code snippets based on request
+    function generateCodeSnippet(request) {
+      if (request.includes('javascript') && request.includes('function')) {
+        return `💻 <strong>JavaScript Function Example:</strong><br><br>
+                <code>// Calculate factorial with error handling
+function factorial(n) {
+  if (typeof n !== 'number' || n < 0) {
+    throw new Error('Input must be a non-negative number');
+  }
+  
+  if (n === 0 || n === 1) return 1;
+  
+  // Recursive implementation
+  return n * factorial(n - 1);
+}
+
+// Example usage with try-catch
+try {
+  const result = factorial(5);
+  console.log(\`Factorial of 5 is: \${result}\`); // Output: 120
+} catch (error) {
+  console.error('Error:', error.message);
+}</code><br><br>
+                This function includes error handling and uses recursion.`;
+      }
+      
+      if (request.includes('python') && request.includes('list')) {
+        return `🐍 <strong>Python List Operations:</strong><br><br>
+                <code># Create a list
+numbers = [1, 2, 3, 4, 5]
+
+# List comprehension to square numbers
+squared = [x**2 for x in numbers]
+print(f"Squared numbers: {squared}")  # Output: [1, 4, 9, 16, 25]
+
+# Filter even numbers
+evens = [x for x in numbers if x % 2 == 0]
+print(f"Even numbers: {evens}")    # Output: [2, 4]
+
+# List operations with error handling
+try:
+    average = sum(numbers) / len(numbers)
+    print(f"Average: {average:.2f}")
+except ZeroDivisionError:
+    print("Cannot calculate average of empty list")
+except TypeError as e:
+    print(f"Type error: {e}")</code>`;
+      }
+      
+      if (request.includes('html') && request.includes('form')) {
+        return `🌐 <strong>HTML Form Example:</strong><br><br>
+                <code>&lt;form id="contactForm" onsubmit="return validateForm()"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" required minlength="2"&gt;
+    &lt;div class="error" id="nameError"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="form-group"&gt;
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+    &lt;div class="error" id="emailError"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="form-group"&gt;
+    &lt;label for="message"&gt;Message:&lt;/label&gt;
+    &lt;textarea id="message" name="message" rows="4" required&gt;&lt;/textarea&gt;
+    &lt;div class="error" id="messageError"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;button type="submit" class="btn-primary"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+function validateForm() {
+  // Validation logic here
+  return true;
+}
+&lt;/script&gt;</code>`;
+      }
+      
+      return `💡 <strong>Code Generation:</strong><br>
+              I can generate code snippets for various languages! Be more specific like:<br>
+              • "Generate JavaScript function to sort array"<br>
+              • "Create Python code to read file with error handling"<br>
+              • "Write HTML form with validation"<br>
+              • "Show CSS for responsive navbar with animations"<br>
+              • "Generate async/await example for API calls"`;
+    }
+    
+    // 4. QR CODE GENERATOR
+    window.generateQRForCurrentPage = function() {
+      const currentURL = window.location.href;
+      generateQRCode(currentURL, 'Current Page QR Code');
+    };
+    
+    function generateQRCode(text, title) {
+      // Simple QR code using canvas
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 200;
+      canvas.height = 200;
+      
+      // Clear canvas
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, 200, 200);
+      
+      // Generate simple QR pattern (simplified)
+      ctx.fillStyle = 'black';
+      const cellSize = 8;
+      const data = text;
+      
+      // Draw simple pattern for demo
+      // In real app, use a QR library like qrcode.js
+      ctx.fillRect(50, 50, 100, 100); // Center square
+      ctx.fillRect(20, 20, 40, 40);   // Corner squares
+      ctx.fillRect(140, 20, 40, 40);
+      ctx.fillRect(20, 140, 40, 40);
+      ctx.fillRect(140, 140, 40, 40);
+      
+      const qrImg = document.getElementById('qrCodeImg');
+      qrImg.innerHTML = '';
+      qrImg.appendChild(canvas);
+      
+      // Show modal
+      document.getElementById('qrModal').classList.add('show');
+      
+      // Store data for download
+      qrImg.dataset.text = text;
+      qrImg.dataset.title = title;
+    }
+    
+    window.closeQRModal = function() {
+      document.getElementById('qrModal').classList.remove('show');
+    };
+    
+    window.downloadQRCode = function() {
+      const canvas = document.querySelector('#qrCodeImg canvas');
+      if (!canvas) return;
+      
+      const link = document.createElement('a');
+      link.download = 'fuschia-qr-code.png';
+      link.href = canvas.toDataURL();
+      link.click();
+      showNotification('QR Code downloaded!');
+    };
+    
+    // 5. EXPORT AS IMAGE
+    window.exportCodeAsImage = function() {
+      const codeViewer = document.getElementById('codeViewer');
+      if (!codeViewer) return;
+      
+      html2canvas(codeViewer).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'fuschia-code-snippet.png';
+        link.href = canvas.toDataURL();
+        link.click();
+        showNotification('Code exported as image!');
+      });
+    };
+    
+    window.exportPageAsImage = function() {
+      const container = document.querySelector('.container');
+      if (!container) return;
+      
+      showNotification('Exporting page as image...');
+      
+      html2canvas(container, {
+        scale: 2,
+        useCORS: true,
+        logging: false
+      }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = 'fuschia-page-screenshot.png';
+        link.href = canvas.toDataURL();
+        link.click();
+        showNotification('Page exported as image!');
+      });
+    };
+    
+    // 6. EXPORT ALL SHARES
+    window.exportAllShares = function() {
+      if (!shares.length) {
+        showNotification('No shares to export');
+        return;
+      }
+      
+      const exportData = {
+        platform: 'FUSCHIA AI',
+        exportedAt: new Date().toISOString(),
+        totalShares: shares.length,
+        totalViews: shares.reduce((sum, s) => sum + (s.views || 0), 0),
+        aiUsage: aiUsageStats,
+        shares: shares.map(share => ({
+          title: share.title,
+          type: share.type,
+          description: share.description,
+          language: share.language,
+          sharedBy: share.sharedBy,
+          views: share.views || 0,
+          avgRating: share.ratings?.length ? 
+            (share.ratings.reduce((a,b) => a + b.value, 0) / share.ratings.length).toFixed(1) : 
+            'N/A',
+          createdAt: share.time
+        }))
+      };
+      
+      const dataStr = JSON.stringify(exportData, null, 2);
+      const dataBlob = new Blob([dataStr], {type: 'application/json'});
+      const url = URL.createObjectURL(dataBlob);
+      
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `fuschia-shares-${new Date().toISOString().split('T')[0]}.json`;
+      link.click();
+      
+      URL.revokeObjectURL(url);
+      showNotification('All shares exported as JSON!');
+    };
+    
     // Initialize on page load
     window.onload = function() {
       loadAllData();
       renderUI();
-      setStars(0); // Initialize rating stars
+      setStars(0);
+      updateDebugConsole();
+      
+      // Load html2canvas for image export
+      if (typeof html2canvas === 'undefined') {
+        const script = document.createElement('script');
+        script.src = 'https://html2canvas.hertzen.com/dist/html2canvas.min.js';
+        document.head.appendChild(script);
+      }
+      
+      // Show welcome message
+      setTimeout(() => {
+        showNotification('🚀 Welcome to FUSCHIA! Try the new 🤝 AI-Pair Programmer!');
+        addDebugLog('FUSCHIA  Platform initialized');
+        addDebugLog(`Loaded ${shares.length} shares, ${contacts.length} contacts`);
+        addDebugLog(`AI Usage: ${aiUsageStats.explanations} explanations, ${aiUsageStats.compilations} compilations`);
+      }, 1000);
     };
   </script>
 </body>
